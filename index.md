@@ -39,7 +39,7 @@
     const path = d3.geoPath(projection);    // same as d3.geopath().projection(projection)
 
     //Create SVG element
-    const svg = d3.select("d3div1")
+    const svg = d3.select("#d3div1")
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h);
