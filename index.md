@@ -21,6 +21,7 @@
         padding-bottom: 50px;
     }
 
+</style>
 
 <div id="d3div1">
     <div class="container">
@@ -32,7 +33,6 @@
     </div>
 </div>
 
-</style>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://unpkg.com/d3-simple-slider"></script>
 <script type="text/javascript">
