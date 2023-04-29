@@ -2,11 +2,9 @@
 
 ---
 
-### Category Name 1 
+### Data Analysis 
 
-[Project 1 Title](/sample_page)
-
-<div id="d3div1"></div>
+[Rangiora township growth since 1840](/sample_page)
 
 <style type="text/css">
 			
@@ -17,8 +15,26 @@
 		text-anchor: middle;
     }
 
+    #d3div1 {
+        width: 500px;
+        float: right;
+        padding-bottom: 50px;
+    }
+
+
+<div id="d3div1">
+    <div class="container">
+        <h6>Set decade</h6>
+            <div class="row align-items-center">
+            <div class="col-sm-2"><p id="value-step"></p></div>
+            <div class="col-sm"><div id="slider-step"></div></div>
+            </div>
+    </div>
+</div>
+
 </style>
 <script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
 <script type="text/javascript">
 
     //Width and height
@@ -33,7 +49,7 @@
     const projection =
             d3.geoMercator()
                 .scale([1000])
-                .center([185, -44]);
+                .center([188, -44.5]);
 
     const path = d3.geoPath(projection);    // same as d3.geopath().projection(projection)
 
@@ -145,7 +161,36 @@
         }).catch( err => {console.log(err)});
 
     }).catch( err => {console.log(err)});
-    
+
+    const decade = [1850, 1860, 1870, 1880, 1890, 1900];
+
+    // Step
+    const sliderStep = d3
+        .sliderBottom()
+        .min(d3.min(decade))
+        .max(d3.max(decade))
+        .width(300)
+        .tickFormat(d3.format('d'))
+        .ticks(6)
+        .step(10)
+        .default(1850)
+        .on('onchange', val => {
+            d3.select('p#value-step').text((val));
+        });
+
+    const gStep = d3
+        .select('div#slider-step')
+        .append('svg')
+        .attr('width', 500)
+        .attr('height', 100)
+        .append('g')
+        .attr('transform', 'translate(30,30)');
+
+    gStep.call(sliderStep);
+
+    d3.select('p#value-step').text(d3.format('d')(sliderStep.value()));
+
+
 </script>
 
 ---
