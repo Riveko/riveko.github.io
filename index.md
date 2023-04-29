@@ -5,7 +5,6 @@
 ### Category Name 1 
 
 [Project 1 Title](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 <div id="d3div1"></div>
 
@@ -27,9 +26,7 @@
     const h = 350;
 
     const color = d3.scaleQuantize()
-    .range([`rgb(237,248,177)`,`rgb(199,233,180)`,`rgb(127,205,187)`,`rgb(65,182,196)`,`rgb(29,145,192)`,`rgb(34,94,168)`,`rgb(37,52,148)`,`rgb(8,29,88)`]);
-    //YlGn scheme [`rgb(247,252,185)`,`rgb(217,240,163)`,`rgb(173,221,142)`,`rgb(120,198,121)`,`rgb(65,171,93)`,`rgb(35,132,67)`,`rgb(0,104,55)`,`rgb(0,69,41)`]
-    //YlGnBu scheme [`rgb(237,248,177)`,`rgb(199,233,180)`,`rgb(127,205,187)`,`rgb(65,182,196)`,`rgb(29,145,192)`,`rgb(34,94,168)`,`rgb(37,52,148)`,`rgb(8,29,88)`]
+    .range([`#addd8e`,`#d9f0a3`,`#f7fcb9`,`#ffffe5`,`#fff7bc`,`#fee391`,`#fec44f`,`#fe9929`]);
     //Colors derived from ColorBrewer, by Cynthia Brewer, and included in https://github.com/d3/d3-scale-chromatic
 
     //Define path generator, using the geoMercator projection
@@ -47,7 +44,7 @@
                 .attr("height", h);
 
     //Load in region data
-    d3.csv("/data/nz_region_land_area.csv").then(data => {
+    d3.csv("/data/nz_region_decades.csv").then(data => {
 
         //Set input domain for color scale
         color.domain([
