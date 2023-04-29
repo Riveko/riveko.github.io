@@ -17,7 +17,6 @@
     }
 
 </style>
-<svg width="400" height="350"></svg>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script type="text/javascript">
 
@@ -40,7 +39,7 @@
     const path = d3.geoPath(projection);    // same as d3.geopath().projection(projection)
 
     //Create SVG element
-    const svg = d3.select("body")
+    const svg = d3.select("d3div1")
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h);
@@ -150,7 +149,7 @@
     
 </script>
 
-<div id='d3div'></div>
+<div id='d3div1'></div>
 
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
