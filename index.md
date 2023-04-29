@@ -7,6 +7,8 @@
 [Project 1 Title](/sample_page)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
+<div id="d3div1"></div>
+
 <style type="text/css">
 			
     .label {
@@ -148,8 +150,6 @@
     }).catch( err => {console.log(err)});
     
 </script>
-
-<div id='d3div1'></div>
 
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
