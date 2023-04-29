@@ -15,11 +15,11 @@
 		text-anchor: middle;
     }
 
-    #d3div1 {
+ /*   #d3div1 {
         width: 500px;
         float: right;
         padding-bottom: 50px;
-    }
+    } */
 
 </style>
 
