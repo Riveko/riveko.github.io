@@ -8,18 +8,12 @@
 
 <style type="text/css">
 			
-    .label {
+    .regionlabel {
 		font-family: Helvetica, sans-serif;
 		font-size: 4px;
 		fill: rgb(239,101,72);
 		text-anchor: middle;
     }
-
- /*   #d3div1 {
-        width: 500px;
-        float: right;
-        padding-bottom: 50px;
-    } */
 
 </style>
 
@@ -27,7 +21,6 @@
     <div class="container">
         <h6>Set decade</h6>
             <div class="row align-items-center">
-            <div class="col-sm-2"><p id="value-step"></p></div>
             <div class="col-sm"><div id="slider-step"></div></div>
             </div>
     </div>
@@ -120,7 +113,7 @@
                 .data(json.features)
                 .enter()
                 .append("text")
-                .attr("class", "label")
+                .attr("class", "regionlabel")
                 .attr("x", function(d) { return path.centroid(d)[0]; })
                 .attr("y", function(d) { return path.centroid(d)[1]; })
                 .text(function(d) {
@@ -162,16 +155,16 @@
 
     }).catch( err => {console.log(err)});
 
-    const decade = [1850, 1860, 1870, 1880, 1890, 1900];
+    const decade = [1850, 1860, 1870, 1880, 1890, 1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
 
-    // Step
+    // Step slider
     const sliderStep = d3
         .sliderBottom()
         .min(d3.min(decade))
         .max(d3.max(decade))
-        .width(300)
+        .width(450)
         .tickFormat(d3.format('d'))
-        .ticks(6)
+        .ticks(18)
         .step(10)
         .default(1850)
         .on('onchange', val => {
@@ -188,18 +181,15 @@
 
     gStep.call(sliderStep);
 
-    d3.select('p#value-step').text(d3.format('d')(sliderStep.value()));
-
-
 </script>
 
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+
 
 ---
 [Project 3 Title](http://example.com/)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+
 
 ---
 
