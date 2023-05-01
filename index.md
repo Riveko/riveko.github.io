@@ -20,9 +20,11 @@
 <div id="d3div1">
     <div class="container">
         <h6>Set decade</h6>
-            <div class="row align-items-center">
-            <div class="col-sm"><div id="slider-step"></div></div>
+        <div class="row align-items-center">
+            <div class="col-sm">
+                <div id="slider-step"></div>
             </div>
+        </div>
     </div>
 </div>
 
@@ -30,27 +32,58 @@
 <script src="https://unpkg.com/d3-simple-slider"></script>
 <script type="text/javascript">
 
-    //Width and height
+    const decade = [1850, 1860, 1870, 1880, 1890, 1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
+    let decadeValue = 1850;
+
+    //Map width and height
     const w = 400;
     const h = 350;
 
-    const color = d3.scaleQuantize()
-    .range([`#addd8e`,`#d9f0a3`,`#f7fcb9`,`#ffffe5`,`#fff7bc`,`#fee391`,`#fec44f`,`#fe9929`]);
-    //Colors derived from ColorBrewer, by Cynthia Brewer, and included in https://github.com/d3/d3-scale-chromatic
+    const color = d3
+        .scaleQuantize()
+        .range([`#004529`,`#006837`,`#238443`,`#41ab5d`,`#78c679`,`#addd8e`,`#d9f0a3`,`#f7fcb9`,`#ffffe5`,`#fff7bc`,`#fee391`,`#fec44f`,`#fe9929`,`#ec7014`,`#cc4c02`,`#993404`]);
+        //Colors derived from ColorBrewer, by Cynthia Brewer
 
     //Define path generator, using the geoMercator projection
-    const projection =
-            d3.geoMercator()
-                .scale([1000])
-                .center([188, -44.5]);
+    const projection = d3
+        .geoMercator()
+        .scale([1000])
+        .center([188, -44.5]);
 
     const path = d3.geoPath(projection);    // same as d3.geopath().projection(projection)
 
     //Create SVG element
-    const svg = d3.select("#d3div1")
-                .append("svg")
-                .attr("width", w)
-                .attr("height", h);
+    const svg = d3
+        .select("div#d3div1")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
+
+    // Step slider
+    const sliderStep = d3
+        .sliderBottom()
+        .min(d3.min(decade))
+        .max(d3.max(decade))
+        .width(450)
+        .fill(`#004529`)
+        .tickFormat(d3.format('d'))
+        .ticks(18)
+        .step(10)
+        .default(decadeValue)
+        .on(`onchange`, function(d) {
+            decadeValue = d;
+            redraw();
+        });
+
+        const gStep = d3
+        .select('div#slider-step')
+        .append('svg')
+        .attr('width', 500)
+        .attr('height', 100)
+        .append('g')
+        .attr('transform', 'translate(30,30)');
+
+        gStep.call(sliderStep);
 
     //Load in region data
     d3.csv("/data/nz_region_decades.csv").then(data => {
@@ -67,7 +100,7 @@
             const formatDecimals = d3.format(",.2f");
 
             //Merge the region data and GeoJSON
-            //Loop through once for each region land area data value
+            //Loop through once for each region
             for (i = 0; i < data.length; i++) {
         
                 //Grab Region name
@@ -102,10 +135,10 @@
             .attr("fill", function(d) {
                 //Get data value
                 const value = d.properties.value;
-                if (value) {        //If value exists…
+                if (value && value <= decadeValue) {					
                     return color(value);
-                } else {            //If value is undefined…
-                    return "#ccc";
+                } else {            // If Region decade does not exist or is > input decade
+                    return "#004529";
                 }});
 
             //Create one label per region
@@ -154,32 +187,21 @@
         }).catch( err => {console.log(err)});
 
     }).catch( err => {console.log(err)});
+    
+    function redraw() {
 
-    const decade = [1850, 1860, 1870, 1880, 1890, 1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
-
-    // Step slider
-    const sliderStep = d3
-        .sliderBottom()
-        .min(d3.min(decade))
-        .max(d3.max(decade))
-        .width(450)
-        .tickFormat(d3.format('d'))
-        .ticks(18)
-        .step(10)
-        .default(1850)
-        .on('onchange', val => {
-            d3.select('p#value-step').text((val));
-        });
-
-    const gStep = d3
-        .select('div#slider-step')
-        .append('svg')
-        .attr('width', 500)
-        .attr('height', 100)
-        .append('g')
-        .attr('transform', 'translate(30,30)');
-
-    gStep.call(sliderStep);
+        // change map and chart to reflect selected decade
+        svg.selectAll("path")
+            .transition()
+            .attr("fill", function(d,i) {
+                //Get data value
+                const value = d.properties.value;
+                if (value && value <= decadeValue) {
+                    return color(value);
+                } else {            //If Region decade does not exist or is > input decade
+                    return "#004529";
+            }});
+    }
 
 </script>
 
