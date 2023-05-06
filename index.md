@@ -104,7 +104,7 @@
     let decadeValue = 2020;
     let dataset = baseDataset.slice(0,decades.indexOf(decadeValue)+1);	
 
-    const w = 400;
+    const w = 350;
     const h = 350;
     const key = (d) => d.key;
     const xScale = d3.scaleBand()
