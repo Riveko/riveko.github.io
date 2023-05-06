@@ -8,23 +8,62 @@
 
 <style type="text/css">
 			
-    .regionlabel {
+    .propertylabel {
 		font-family: Helvetica, sans-serif;
 		font-size: 4px;
 		fill: rgb(239,101,72);
 		text-anchor: middle;
+        display: none;
+    }
+
+    #divStoryBox {
+        position: absolute;
+        width: 350px;
+        height: auto;
+        padding: 10px;
+        background-color: white;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+    }
+			
+	#divStoryBox.hidden {
+		display: none;
+	}
+
+    #divStoryBox p {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 12px;
+        line-height: 16px;
+    
     }
 
 </style>
 
 <div id="d3div1">
     <div class="container">
-        <h6>Set decade</h6>
-        <div class="row align-items-center">
-            <div class="col-sm">
-                <div id="slider-step"></div>
-            </div>
-        </div>
+        <!-- Step slider-->
+		<div class="row align-items-center">
+			<div class="col-sm">
+				<div id="slider-step"></div>
+			</div>
+		</div>	
+		<!-- Properties map -->
+		<div id="divMap"></div>
+		<!-- Population bar chart -->
+		<div id="divChart"></div>
+		<!-- Story box for text and images -->
+		<div id="divStoryBox" style="left:10px;top:430px;">
+			<p><strong><span id="storyBoxTitle"></span></strong></p>
+			<p><span id="storyBoxText"></span></p>
+            <img src="/images/rangiora_high_street.png" alt="Farmers Co-op store" height="90px" width="160px">
+			<p><span id="storyBoxCitation" style="font-size: 9px; color: #8d918d"></span></p>
+		</div>
     </div>
 </div>
 
@@ -32,42 +71,59 @@
 <script src="https://unpkg.com/d3-simple-slider"></script>
 <script type="text/javascript">
 
-    const decade = [1850, 1860, 1870, 1880, 1890, 1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];
-    let decadeValue = 1850;
+    //Define Global variables
+    const baseDataset = [ 
+        { key: 0, decade: 1840, population: 0, color: `#004529`, text: `Prior to Ngati Toa's attack and destruction of Kaiapohia Pa in 1831, Ngai Tahu built pataka in Rangiora to store weapons and food.` },		
+        { key: 1, decade: 1850, population: 20, color: `#004529`, text: `In 1851, Charles Torlesse and John Boys, together with their wives (two Townsend sisters from Ferrymead - Alicia and Priscilla) were the first Europeans to build homes on recently acquired rural sections in Rangiora` },		
+        { key: 2, decade: 1860, population: 200, color: `#006837`, text: `1860's text` },		
+        { key: 3, decade: 1870, population: 750, color: `#238443`, text: `1870's text` },
+        { key: 4, decade: 1880, population: 1500, color: `#41ab5d`, text: `1880's text` },
+        { key: 5, decade: 1890, population: 1800, color: `#78c679`, text: `1890's text` },
+        { key: 6, decade: 1900, population: 1800, color: `#addd8e`, text: `1900's text` },
+        { key: 7, decade: 1910, population: 1800, color: `#d9f0a3`, text: `By the 1910's, Rangiora had still not grown much` },
+        { key: 8, decade: 1920, population: 2000, color: `#f7fcb9`, text: `1920's text` },
+        { key: 9, decade: 1930, population: 2100, color: `#ffffe5`, text: `1930's text` },
+        { key: 10, decade: 1940, population: 2300, color: `#fff7bc`, text: `1940's text` },
+        { key: 11, decade: 1950, population: 2800, color: `#fee391`, text: `1950's text` },
+        { key: 12, decade: 1960, population: 3500, color: `#fec44f`, text: `1960's text` },
+        { key: 13, decade: 1970, population: 4800, color: `#fe9929`, text: `1970's text` },
+        { key: 14, decade: 1980, population: 6400, color: `#ec7014`, text: `1980's text` },
+        { key: 15, decade: 1990, population: 8800, color: `#cc4c02`, text: `1990's text` },
+        { key: 16, decade: 2000, population: 10800, color: `#e31a1c`, text: `2000's text` },
+        { key: 17, decade: 2010, population: 12000, color: `#bd0026`, text: `2010's text` },
+        { key: 18, decade: 2020, population: 23000, color: `#800026`, text: `Following the Christchurch earthquakes in 2010 and 2011, many "red stickered" residents used their Government and insurance pay-outs to build new homes in Rangiora subdivisions, recently developed on ex-farmland beyond the original town "belts".` }
+    ];
 
-    //Map width and height
+    const decades = [];
+    const colors = [];
+    baseDataset.forEach(item => {
+        decades.push(item.decade);
+        colors.push(item.color);
+    })
+
+    let decadeValue = 2020;
+    let dataset = baseDataset.slice(0,decades.indexOf(decadeValue)+1);	
+
     const w = 400;
     const h = 350;
-
-    const color = d3
-        .scaleQuantize()
-        .range([`#004529`,`#006837`,`#238443`,`#41ab5d`,`#78c679`,`#addd8e`,`#d9f0a3`,`#f7fcb9`,`#ffffe5`,`#fff7bc`,`#fee391`,`#fec44f`,`#fe9929`,`#ec7014`,`#cc4c02`,`#993404`]);
-        //Colors derived from ColorBrewer, by Cynthia Brewer
-
-    //Define path generator, using the geoMercator projection
-    const projection = d3
-        .geoMercator()
-        .scale([1000])
-        .center([188, -44.5]);
-
-    const path = d3.geoPath(projection);    // same as d3.geopath().projection(projection)
-
-    //Create SVG element
-    const svg = d3
-        .select("div#d3div1")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h);
-
-    // Step slider
+    const key = (d) => d.key;
+    const xScale = d3.scaleBand()
+        .domain(d3.range(baseDataset.length))
+        .rangeRound([0, w])
+        .paddingInner(0.05);			
+    const yScale = d3.scaleLinear()
+        .domain([0, d3.max(baseDataset, function(d) { return d.population; })])
+        .range([0, h]);
+    
+    //Set up step slider control svg
     const sliderStep = d3
         .sliderBottom()
-        .min(d3.min(decade))
-        .max(d3.max(decade))
-        .width(450)
+        .min(d3.min(decades))
+        .max(d3.max(decades))
+        .width(350)
         .fill(`#004529`)
         .tickFormat(d3.format('d'))
-        .ticks(18)
+        .ticks(4)
         .step(10)
         .default(decadeValue)
         .on(`onchange`, function(d) {
@@ -75,133 +131,209 @@
             redraw();
         });
 
-        const gStep = d3
-        .select('div#slider-step')
-        .append('svg')
-        .attr('width', 500)
-        .attr('height', 100)
-        .append('g')
-        .attr('transform', 'translate(30,30)');
+    const gStep = d3	
+        .select(`div#slider-step`)
+        .append(`svg`)
+        .attr(`width`, 400)
+        .attr(`height`, 80)
+        .append(`g`)
+        .attr(`transform`, `translate(30,30)`);
 
-        gStep.call(sliderStep);
+    //Define path generator, using the geoMercator projection
+    const projection = d3
+        .geoMercator()
+        .scale([340000])
+        .center([172.64, -43.317]);
 
-    //Load in region data
-    d3.csv("/data/nz_region_decades.csv").then(data => {
+    const path = d3.geoPath(projection);
+    
+    //Create map svg element
+    const svgMap = d3
+        .select("div#divMap")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);	
 
-        //Set input domain for color scale
-        color.domain([
-            d3.min(data, function(d) { return +d.value; }), 
-            d3.max(data, function(d) { return +d.value; })
-        ]);
-
-        //Load in GeoJSON data
-        d3.json("/data/nz_regions_simplified_geojson.json").then(json => {
-
-            const formatDecimals = d3.format(",.2f");
-
-            //Merge the region data and GeoJSON
-            //Loop through once for each region
-            for (i = 0; i < data.length; i++) {
+    //Create bar chart svg element
+    const svgChart = d3
+        .select("div#divChart")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
         
-                //Grab Region name
-                const dataRegion = data[i].region;
-                
-                //Grab data value, and convert from string to float
-                const dataValue = parseFloat(data[i].value);
-        
-                //Find the corresponding Region inside the GeoJSON
-                for (j = 0; j < json.features.length; j++) {
-                
-                    const jsonRegion = json.features[j].properties.name;
-        
-                    if (dataRegion == jsonRegion) {
-                
-                        //Copy the data value into the JSON
-                        json.features[j].properties.value = dataValue;
-                        
-                        //Stop looking through the JSON
-                        break;
-                        
+    //Function - set up properties map svg
+    function propertyMap () {
+    
+        d3.json("/data/rangiora_property_titles.json").then(json => {				
+
+            //Bind data and create one path per property
+            const rangioramap = svgMap
+                .selectAll("path")
+                .data(json.features)
+                .enter()
+                .append("path")
+                .attr("d", path)                   
+                .attr("fill", function(d) {
+                    //Get decade color for the property
+                    const value = parseInt(d.properties.decade);
+                    if (value && value <= decadeValue) {
+                        return colors[decades.indexOf(value)];
+                    } else {            // If property decade does not exist or is > input decade
+                        return "#004529";
                     }
-                }		
-            }
-            
-            //Bind data and create one path per GeoJSON feature
-            const nzmap = svg.selectAll("path")
-            .data(json.features)
-            .enter()
-            .append("path")
-            .attr("d", path)                   
-            .attr("fill", function(d) {
-                //Get data value
-                const value = d.properties.value;
-                if (value && value <= decadeValue) {					
-                    return color(value);
-                } else {            // If Region decade does not exist or is > input decade
-                    return "#004529";
-                }});
+                });
 
-            //Create one label per region
-            const regionLabels = svg.selectAll("text")
+            //Create one label per property
+            const propertyLabels = svgMap
+                .selectAll("text")
                 .data(json.features)
                 .enter()
                 .append("text")
-                .attr("class", "regionlabel")
+                .attr("class", "propertylabel")
                 .attr("x", function(d) { return path.centroid(d)[0]; })
                 .attr("y", function(d) { return path.centroid(d)[1]; })
                 .text(function(d) {
-                    if (d.properties.value) {
-                        return formatDecimals(d.properties.value);
+                    if (d.properties.seqno) {
+                        return d.properties.seqno;
                     }
-            });
-
-            //Load in cities data
-            d3.csv("/data/nz-cities.csv").then(data => {
-                
-                const formatThousands = d3.format(",.2r");
-
-                const cities = svg.selectAll("circle")
-                    .data(data)
-                    .enter()
-                    .append("circle")
-                    .attr("cx", function(d) {
-                        return projection([d.lon, d.lat])[0];
-                    })
-                    .attr("cy", function(d) {
-                        return projection([d.lon, d.lat])[1];
-                    })
-                    .attr("r", function(d) {
-                        return Math.sqrt(parseInt(d.population) * 0.00003);
-                    })
-                    .attr("fill", "rgb(253,187,132)")
-                    .attr("stroke", "gray")
-                    .attr("stroke-width", 0.25)
-                    .attr("opacity", 0.75)
-                    .append("title")			//Simple tooltip
-                    .text(function(d) {
-                        return d.place + ": Pop. " + formatThousands(d.population);
-                    });
-                
-            }).catch( err => {console.log(err)});
+                });
 
         }).catch( err => {console.log(err)});
+        
+    }
+                
+    //Function - set up story box svg
+    function storyBox () {
 
-    }).catch( err => {console.log(err)});
+        d3.select(`#divStoryBox`)
+            .select(`#storyBoxTitle`)
+            .text(decadeValue + `'s population: ` + dataset[decades.indexOf(decadeValue)].population);
+
+        d3.select(`#divStoryBox`)
+            .select(`#storyBoxText`)
+            .text(dataset[decades.indexOf(decadeValue)].text);
+
+        d3.select(`#divStoryBox`)
+            .select(`#storyBoxCitation`)
+            .text(decadeValue < 1980 ? `Source: Rangiora by D.N Hawkins, Rangiora Borough Council 1983` : ``);
+            
+        //Display the story box
+        d3.select(`#divStoryBox`).classed(`hidden`, false);
+        
+    }
+                
+    //Function - add bars to population bar chart svg
+    function populationChart() {
     
+        svgChart.selectAll("rect")
+            .data(dataset, key)
+            .enter()
+            .append("rect")
+            .attr("x", function(d, i) {
+                return xScale(i);
+            })
+            .attr("y", function(d) {
+                return h - yScale(d.population);
+            })
+            .attr("width", xScale.bandwidth())
+            .attr("height", function(d) {
+                return yScale(d.population);
+            })
+            .attr("fill", function(d) {
+                return colors[d.key];
+            });
+            
+    }
+    
+    
+    //Function - redraw map svg and bar chart on change of decade in slider control
     function redraw() {
 
-        // change map and chart to reflect selected decade
-        svg.selectAll("path")
+        const lastKeyValue = dataset.length - 1;
+        if (decadeValue != decades[dataset.length - 1]) {
+            dataset = baseDataset.slice(0,decades.indexOf(decadeValue)+1);
+        }
+        yScale.domain([0, d3.max(baseDataset, function(d) { return d.population; })]);
+
+        // change map to reflect selected decade
+        svgMap.selectAll("path")
             .transition()
             .attr("fill", function(d,i) {
                 //Get data value
-                const value = d.properties.value;
+                const value = parseInt(d.properties.decade);
                 if (value && value <= decadeValue) {
-                    return color(value);
-                } else {            //If Region decade does not exist or is > input decade
+                    return colors[decades.indexOf(value)];
+                } else {            //If property decade does not exist or is > input decade
                     return "#004529";
             }});
+
+        //Update the story text box
+        d3.select(`#divStoryBox`)
+            .select(`#storyBoxTitle`)
+            .text(decadeValue + `'s population: ` + dataset[decades.indexOf(decadeValue)].population);
+
+        d3.select(`#divStoryBox`)
+            .select(`#storyBoxText`)
+            .text(dataset[decades.indexOf(decadeValue)].text);
+
+        d3.select(`#divStoryBox`)
+            .select(`#storyBoxCitation`)
+            .text(decadeValue < 1980 ? `Source: Rangiora by D.N Hawkins, Rangiora Borough Council 1983` : ``);
+        
+        //Display the story text box
+        d3.select("#divStoryBox").classed("hidden", false);
+
+        //Update chart to reflect selected decade				
+        const bars = svgChart.selectAll("rect")
+            .data(dataset, key);
+        
+        bars.enter()
+            .append("rect")
+            .attr("x", function(d, i) {
+                return xScale(i);
+            })
+            .attr("y", h)
+            .attr("width", xScale.bandwidth())
+            .attr("height", 0)
+            .attr("fill", function(d) {
+                return colors[d.key];
+            })
+            .merge(bars)
+            .transition()
+            .duration(200)
+            .attr("x", function(d, i) {
+                return xScale(i);
+            })
+            .attr("y", function(d) {
+                return h - yScale(d.population);
+            })
+            .attr("width", xScale.bandwidth())
+            .attr("height", function(d) {
+                return yScale(d.population);
+            });
+        
+        bars.exit()
+            .transition()
+            .duration(200)
+            .attr("y", h)
+            .remove();
+            
+    }			
+    
+    //Function - main function that runs each of the component functions
+    function runInfographic () {
+    
+        gStep.call(sliderStep);	//Runs the slider step control
+        
+        propertyMap();			//Sets up initial display of the properties map
+        
+        storyBox();				//Sets up initial display of the story box
+        
+        populationChart();		//Sets up initial display of the population bar chart			
+    
     }
+    
+    runInfographic();
 
 </script>
 
