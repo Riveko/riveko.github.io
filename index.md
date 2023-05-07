@@ -131,7 +131,7 @@
     const gStep = d3	
         .select(`div#slider-step`)
         .append(`svg`)
-        .attr(`width`, 400)
+        .attr(`width`, 350)
         .attr(`height`, 80)
         .append(`g`)
         .attr(`transform`, `translate(30,30)`);
