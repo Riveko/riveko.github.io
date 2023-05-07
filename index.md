@@ -45,12 +45,6 @@
 </style>
 
 <div id="d3div">
-    <!-- Step slider-->
-    <div class="row align-items-center">
-        <div class="col-sm">
-            <div id="slider-step"></div>
-        </div>
-    </div>	
     <!-- Properties map -->
     <div id="divMap"></div>
     <!-- Population bar chart -->
@@ -112,29 +106,7 @@
         .domain([0, d3.max(baseDataset, function(d) { return d.population; })])
         .range([0, h]);
     
-    //Set up step slider control svg
-    const sliderStep = d3
-        .sliderBottom()
-        .min(d3.min(decades))
-        .max(d3.max(decades))
-        .width(350)
-        .fill(`#004529`)
-        .tickFormat(d3.format('d'))
-        .ticks(4)
-        .step(10)
-        .default(decadeValue)
-        .on(`onchange`, function(d) {
-            decadeValue = d;
-            redraw();
-        });
-
-    const gStep = d3	
-        .select(`div#slider-step`)
-        .append(`svg`)
-        .attr(`width`, 400)
-        .attr(`height`, 80)
-        .append(`g`)
-        .attr(`transform`, `translate(30,30)`);
+ 
 
     //Define path generator, using the geoMercator projection
     const projection = d3
@@ -180,21 +152,7 @@
                     }
                 });
 
- /*           //Create one label per property
-            const propertyLabels = svgMap
-                .selectAll("text")
-                .data(json.features)
-                .enter()
-                .append("text")
-                .attr("class", "propertylabel")
-                .attr("x", function(d) { return path.centroid(d)[0]; })
-                .attr("y", function(d) { return path.centroid(d)[1]; })
-                .text(function(d) {
-                    if (d.properties.seqno) {
-                        return d.properties.seqno;
-                    }
-                });
-*/
+
         }).catch( err => {console.log(err)});
         
     }
@@ -320,7 +278,7 @@
     //Function - main function that runs each of the component functions
     function runInfographic () {
     
-        gStep.call(sliderStep);	//Runs the slider step control
+
         
         propertyMap();			//Sets up initial display of the properties map
         
