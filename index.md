@@ -44,25 +44,23 @@
 
 </style>
 
-    <div id=d3div1>
-        <div class="container">
-            <!-- Step slider-->
-            <div class="row align-items-center">
-                <div class="col-sm">
-                    <div id="slider-step"></div>
-                </div>
-            </div>	
-            <!-- Properties map -->
-            <div id="divMap"></div>
-            <!-- Population bar chart -->
-            <div id="divChart"></div>
-            <!-- Story box for text and images -->
-            <div id="divStoryBox" >
-                <p><strong><span id="storyBoxTitle"></span></strong></p>
-                <p><span id="storyBoxText"></span></p>
-                <img src="/images/rangiora_high_street.png" alt="Farmers Co-op store" height="90px" width="160px">
-                <p><span id="storyBoxCitation" style="font-size: 9px; color: #8d918d"></span></p>
+    <div id="infographic">
+        <!-- Step slider-->
+        <div class="row align-items-center">
+            <div class="col-sm">
+                <div id="slider-step"></div>
             </div>
+        </div>	
+        <!-- Properties map -->
+        <div id="divMap"></div>
+        <!-- Population bar chart -->
+        <div id="divChart"></div>
+        <!-- Story box for text and images -->
+        <div id="divStoryBox" >
+            <p><strong><span id="storyBoxTitle"></span></strong></p>
+            <p><span id="storyBoxText"></span></p>
+            <img src="/images/rangiora_high_street.png" alt="Farmers Co-op store" height="90px" width="160px">
+            <p><span id="storyBoxCitation" style="font-size: 9px; color: #8d918d"></span></p>
         </div>
     </div>
 
