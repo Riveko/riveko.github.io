@@ -39,30 +39,31 @@
         margin: 0;
         font-family: sans-serif;
         font-size: 12px;
-        line-height: 16px;
-    
+        line-height: 16px;    
     }
 
 </style>
 
-    <div class="container">
-        <!-- Step slider-->
-		<div class="row align-items-center">
-			<div class="col-sm">
-				<div id="slider-step"></div>
-			</div>
-		</div>	
-		<!-- Properties map -->
-		<div id="divMap"></div>
-		<!-- Population bar chart -->
-		<div id="divChart"></div>
-		<!-- Story box for text and images -->
-		<div id="divStoryBox" >
-			<p><strong><span id="storyBoxTitle"></span></strong></p>
-			<p><span id="storyBoxText"></span></p>
-            <img src="/images/rangiora_high_street.png" alt="Farmers Co-op store" height="90px" width="160px">
-			<p><span id="storyBoxCitation" style="font-size: 9px; color: #8d918d"></span></p>
-		</div>
+    <div id=d3div1>
+        <div class="container">
+            <!-- Step slider-->
+            <div class="row align-items-center">
+                <div class="col-sm">
+                    <div id="slider-step"></div>
+                </div>
+            </div>	
+            <!-- Properties map -->
+            <div id="divMap"></div>
+            <!-- Population bar chart -->
+            <div id="divChart"></div>
+            <!-- Story box for text and images -->
+            <div id="divStoryBox" >
+                <p><strong><span id="storyBoxTitle"></span></strong></p>
+                <p><span id="storyBoxText"></span></p>
+                <img src="/images/rangiora_high_street.png" alt="Farmers Co-op store" height="90px" width="160px">
+                <p><span id="storyBoxCitation" style="font-size: 9px; color: #8d918d"></span></p>
+            </div>
+        </div>
     </div>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
