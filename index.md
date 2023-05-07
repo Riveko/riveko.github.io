@@ -18,7 +18,7 @@
 
     #divStoryBox {
         position: absolute;
-        width: 350px;
+        width: 300px;
         height: auto;
         padding: 10px;
         background-color: white;
@@ -45,7 +45,6 @@
 
 </style>
 
-<div id="d3div1">
     <div class="container">
         <!-- Step slider-->
 		<div class="row align-items-center">
@@ -65,7 +64,6 @@
 			<p><span id="storyBoxCitation" style="font-size: 9px; color: #8d918d"></span></p>
 		</div>
     </div>
-</div>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://unpkg.com/d3-simple-slider"></script>
@@ -183,7 +181,7 @@
                     }
                 });
 
-            //Create one label per property
+ /*           //Create one label per property
             const propertyLabels = svgMap
                 .selectAll("text")
                 .data(json.features)
@@ -197,7 +195,7 @@
                         return d.properties.seqno;
                     }
                 });
-
+*/
         }).catch( err => {console.log(err)});
         
     }
