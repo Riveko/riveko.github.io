@@ -57,7 +57,7 @@
 		<!-- Population bar chart -->
 		<div id="divChart"></div>
 		<!-- Story box for text and images -->
-		<div id="divStoryBox" style="left:10px;top:430px;">
+		<div id="divStoryBox" >
 			<p><strong><span id="storyBoxTitle"></span></strong></p>
 			<p><span id="storyBoxText"></span></p>
             <img src="/images/rangiora_high_street.png" alt="Farmers Co-op store" height="90px" width="160px">
