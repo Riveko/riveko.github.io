@@ -140,7 +140,9 @@
         .select(`div#divChart`)
         .append(`svg`)
         .attr(`width`, chartWidth + chartMargin.left + chartMargin.right)
-        .attr(`height`, chartHeight + chartMargin.top + chartMargin.bottom);
+        .attr(`height`, chartHeight + chartMargin.top + chartMargin.bottom)
+        .append(`g`)
+        .attr(`transform`, `translate(30,30)`);
 
     const xScale = d3.scaleLinear()
         .domain([0, maxPopulation])
@@ -155,7 +157,7 @@
     const yAxis = d3.axisLeft(yScale).tickValues([]);
 
     svgChart.append(`g`)
-        .attr(`transform`, `translate(0,${chartHeight})`)
+        .attr(`transform`, `translate(30,${chartHeight})`)
         .call(xAxis)
         .call(g => g.select(`.domain`).remove());
 
