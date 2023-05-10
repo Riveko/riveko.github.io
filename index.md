@@ -147,7 +147,11 @@
         .attr(`width`, chartWidth + chartMargin.left + chartMargin.right)
         .attr(`height`, chartHeight + chartMargin.top + chartMargin.bottom)
         .append(`g`)
-        .attr(`transform`, `translate(30,0)`);
+        .attr(`transform`, `translate(30,0)`)
+        .append(`text`)
+        .attr(`x`, 30)
+        .attr(`y`, 0)
+        .text(`Population`);
 
     const xScale = d3.scaleLinear()
         .domain([0, maxPopulation])
@@ -185,14 +189,14 @@
         .select("div#divMap")
         .append("svg")
         .attr("width", w)
-        .attr("height", h);	
+        .attr("height", h)
+        .append(`text`)
+        .attr(`x`, 30)
+        .attr(`y`, 0)
+        .text(`Property growth`);
              
     //Function - add bar to population bar chart svg
     function populationChart() {
-
-        d3.select(`div#divChart`)
-            .select(`#populationChartTitle`)
-            .text(`Population`);
 
         svgChart.selectAll(`rect`)
             .data(decadeValueDataObject)
@@ -208,10 +212,6 @@
     
     //Function - set up properties map svg
     function propertyMap () {
-
-        d3.select(`div#divMap`)
-            .select(`#propertyMapTitle`)
-            .text(`Property growth`);
 
         d3.json("/data/rangiora_property_titles.json").then(json => {				
 
