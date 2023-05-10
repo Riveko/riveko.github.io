@@ -52,9 +52,13 @@
         </div>
     </div>	
         <!-- Population bar chart -->
-    <div id="divChart"></div>
+    <div id="divChart">
+        <p><span id="populationChartTitle" style="font-size: 12px; color: #8d918d"></span></p>
+    </div>
     <!-- Properties map -->
-    <div id="divMap"></div>
+    <div id="divMap">
+        <p><span id="propertyMapTitle" style="font-size: 12px; color: #8d918d"></span></p>
+    </div>
     <!-- Story box for text and images -->
     <div id="divStoryBox" >
         <p><strong><span id="storyBoxTitle"></span></strong></p>
@@ -135,6 +139,7 @@
     const chartMargin = { top: 10, right: 10, bottom: 20, left: 40 };
     const chartWidth = 350 - chartMargin.left - chartMargin.right;
     const chartHeight = 100 - chartMargin.top - chartMargin.bottom;
+    const barHeight = 20;
 
     const svgChart = d3
         .select(`div#divChart`)
@@ -184,14 +189,18 @@
              
     //Function - add bar to population bar chart svg
     function populationChart() {
-console.log(decadeValueDataObject);
+
+        d3.select(`div#divChart`)
+            .select(`#populationChartTitle`)
+            .text(`Population`);
+
         svgChart.selectAll(`rect`)
             .data(decadeValueDataObject)
             .enter()
             .append(`rect`)
             .attr(`x`, 0)
             .attr(`y`, d => yScale(d.decade))
-            .attr(`height`, yScale.bandwidth())
+            .attr(`height`, barHeight)
             .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
             .attr(`fill`, d => colors[d.key]);
 
@@ -199,7 +208,11 @@ console.log(decadeValueDataObject);
     
     //Function - set up properties map svg
     function propertyMap () {
-    
+
+        d3.select(`div#divMap`)
+            .select(`#propertyMapTitle`)
+            .text(`Property growth`);
+
         d3.json("/data/rangiora_property_titles.json").then(json => {				
 
             //Bind data and create one path per property
