@@ -35,7 +35,7 @@
 		display: none;
 	}
 
-    #divStoryBox p #divChart p #divMap p {
+    #divStoryBox p, #divChart p, #divMap p {
         margin: 0;
         font-family: sans-serif;
         font-size: 12px;
@@ -163,7 +163,7 @@
     const yAxis = d3.axisLeft(yScale).tickValues([]);
 
     svgChart.append(`g`)
-        .attr(`transform`, `translate(0,${chartHeight - 20})`)
+        .attr(`transform`, `translate(0,${chartHeight - 10})`)
         .call(xAxis)
         .call(g => g.select(`.domain`).remove());
 
