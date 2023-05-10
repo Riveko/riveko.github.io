@@ -182,7 +182,7 @@
              
     //Function - add bar to population bar chart svg
     function populationChart() {
-
+console.log(decadeValueDataObject);
         svgChart.selectAll(`rect`)
             .data(decadeValueDataObject, key)
             .enter()
