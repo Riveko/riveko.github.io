@@ -51,10 +51,10 @@
             <div id="slider-step"></div>
         </div>
     </div>	
+        <!-- Population bar chart -->
+    <div id="divChart"></div>
     <!-- Properties map -->
     <div id="divMap"></div>
-    <!-- Population bar chart -->
-    <div id="divChart"></div>
     <!-- Story box for text and images -->
     <div id="divStoryBox" >
         <p><strong><span id="storyBoxTitle"></span></strong></p>
@@ -99,18 +99,13 @@
     })
 
     let decadeValue = 2020;
-    let dataset = baseDataset.slice(0,decades.indexOf(decadeValue)+1);	
+    let dataset = baseDataset.slice(0,decades.indexOf(decadeValue)+1);
+    let decadeValueDataObject = baseDataset[decades.indexOf(decadeValue)];
+    const maxPopulation = d3.max(baseDataset, d => d.population);
 
     const w = 350;
     const h = 350;
-    const key = (d) => d.key;
-    const xScale = d3.scaleBand()
-        .domain(d3.range(baseDataset.length))
-        .rangeRound([0, w])
-        .paddingInner(0.05);			
-    const yScale = d3.scaleLinear()
-        .domain([0, d3.max(baseDataset, function(d) { return d.population; })])
-        .range([0, h]);
+
     
     //Set up step slider control svg
     const sliderStep = d3
@@ -136,6 +131,40 @@
         .append(`g`)
         .attr(`transform`, `translate(30,30)`);
 
+    //Create bar chart svg element, scales and axes
+    const chartMargin = { top: 10, right: 10, bottom: 20, left: 40 };
+    const chartWidth = 350 - chartMargin.left - chartMargin.right;
+    const chartHeight = 100 - chartMargin.top - chartMargin.bottom;
+
+    const svgChart = d3
+        .select(`div#divChart`)
+        .append(`svg`)
+        .attr(`width`, chartWidth + chartMargin.left + chartMargin.right)
+        .attr(`height`, chartHeight + chartMargin.top + chartMargin.bottom);
+
+    const xScale = d3.scaleLinear()
+        .domain([0, maxPopulation])
+        .range([0, chartWidth]);
+
+    const yScale = d3.scaleBand()
+        .domain(decadeValue)
+        .rangeRound([0, chartHeight])
+        .padding(0.15);
+
+    const xAxis = d3.axisBottom(xScale).ticks(2, `,.3d`).tickSize(0);
+    const yAxis = d3.axisLeft(yScale).tickValues([]);
+
+    svgChart.append(`g`)
+        .attr(`transform`, `translate(0,${chartHeight})`)
+        .call(xAxis)
+        .call(g => g.select(`.domain`).remove());
+
+    svgChart.append(`g`)
+        .call(yAxis)
+        .call(g => g.select(`.domain`).remove());
+
+    const key = (d) => d.key;
+
     //Define path generator, using the geoMercator projection
     const projection = d3
         .geoMercator()
@@ -150,14 +179,22 @@
         .append("svg")
         .attr("width", w)
         .attr("height", h);	
+             
+    //Function - add bar to population bar chart svg
+    function populationChart() {
 
-    //Create bar chart svg element
-    const svgChart = d3
-        .select("div#divChart")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h);
-        
+        svgChart.selectAll(`rect`)
+            .data(decadeValueDataObject, key)
+            .enter()
+            .append(`rect`)
+            .attr(`x`, 0)
+            .attr(`y`, d => yScale(d.decade))
+            .attr(`height`, yScale.bandwidth())
+            .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
+            .attr(`fill`, d => colors[d.key]);
+
+    }
+    
     //Function - set up properties map svg
     function propertyMap () {
     
@@ -218,30 +255,6 @@
         d3.select(`#divStoryBox`).classed(`hidden`, false);
         
     }
-                
-    //Function - add bars to population bar chart svg
-    function populationChart() {
-    
-        svgChart.selectAll("rect")
-            .data(dataset, key)
-            .enter()
-            .append("rect")
-            .attr("x", function(d, i) {
-                return xScale(i);
-            })
-            .attr("y", function(d) {
-                return h - yScale(d.population);
-            })
-            .attr("width", xScale.bandwidth())
-            .attr("height", function(d) {
-                return yScale(d.population);
-            })
-            .attr("fill", function(d) {
-                return colors[d.key];
-            });
-            
-    }
-    
     
     //Function - redraw map svg and bar chart on change of decade in slider control
     function redraw() {
@@ -321,13 +334,13 @@
     function runInfographic () {
     
         gStep.call(sliderStep);	//Runs the slider step control
+
+        populationChart();		//Sets up initial display of the population bar chart	
         
         propertyMap();			//Sets up initial display of the properties map
         
         storyBox();				//Sets up initial display of the story box
-        
-        populationChart();		//Sets up initial display of the population bar chart			
-    
+		
     }
     
     runInfographic();
