@@ -35,7 +35,7 @@
 		display: none;
 	}
 
-    #divStoryBox #divChart #divMap p {
+    #divStoryBox p #divChart p #divMap p {
         margin: 0;
         font-family: sans-serif;
         font-size: 12px;
@@ -147,7 +147,7 @@
         .attr(`width`, chartWidth + chartMargin.left + chartMargin.right)
         .attr(`height`, chartHeight + chartMargin.top + chartMargin.bottom)
         .append(`g`)
-        .attr(`transform`, `translate(15,0)`);
+        .attr(`transform`, `translate(20,0)`);
 
 
     const xScale = d3.scaleLinear()
@@ -163,7 +163,7 @@
     const yAxis = d3.axisLeft(yScale).tickValues([]);
 
     svgChart.append(`g`)
-        .attr(`transform`, `translate(0,${chartHeight - 30})`)
+        .attr(`transform`, `translate(0,${chartHeight - 20})`)
         .call(xAxis)
         .call(g => g.select(`.domain`).remove());
 
