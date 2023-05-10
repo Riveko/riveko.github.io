@@ -146,12 +146,13 @@
         .append(`svg`)
         .attr(`width`, chartWidth + chartMargin.left + chartMargin.right)
         .attr(`height`, chartHeight + chartMargin.top + chartMargin.bottom)
-        .append(`g`)
-        .attr(`transform`, `translate(30,0)`)
         .append(`text`)
-        .attr(`x`, 30)
+        .attr(`x`, 0)
         .attr(`y`, 0)
-        .text(`Population`);
+        .text(`Population`)
+        .append(`g`)
+        .attr(`transform`, `translate(30,0)`);
+
 
     const xScale = d3.scaleLinear()
         .domain([0, maxPopulation])
@@ -166,7 +167,7 @@
     const yAxis = d3.axisLeft(yScale).tickValues([]);
 
     svgChart.append(`g`)
-        .attr(`transform`, `translate(0,${chartHeight})`)
+        .attr(`transform`, `translate(0,${chartHeight - 30})`)
         .call(xAxis)
         .call(g => g.select(`.domain`).remove());
 
@@ -189,11 +190,7 @@
         .select("div#divMap")
         .append("svg")
         .attr("width", w)
-        .attr("height", h)
-        .append(`text`)
-        .attr(`x`, 30)
-        .attr(`y`, 0)
-        .text(`Property growth`);
+        .attr("height", h);
              
     //Function - add bar to population bar chart svg
     function populationChart() {
