@@ -147,7 +147,7 @@
         .range([0, chartWidth]);
 
     const yScale = d3.scaleBand()
-        .domain(decadeValue)
+        .domain([decadeValue])
         .rangeRound([0, chartHeight])
         .padding(0.15);
 
