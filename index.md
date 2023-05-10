@@ -53,11 +53,11 @@
     </div>	
         <!-- Population bar chart -->
     <div id="divChart">
-        <p><span id="populationChartTitle" style="font-size: 12px; color: #8d918d"></span></p>
+        <p><span style="font-size: 12px; color: #8d918d">Population</span></p>
     </div>
     <!-- Properties map -->
     <div id="divMap">
-        <p><span id="propertyMapTitle" style="font-size: 12px; color: #8d918d"></span></p>
+        <p><span style="font-size: 12px; color: #8d918d">Property growth</span></p>
     </div>
     <!-- Story box for text and images -->
     <div id="divStoryBox" >
@@ -146,10 +146,6 @@
         .append(`svg`)
         .attr(`width`, chartWidth + chartMargin.left + chartMargin.right)
         .attr(`height`, chartHeight + chartMargin.top + chartMargin.bottom)
-        .append(`text`)
-        .attr(`x`, 0)
-        .attr(`y`, 0)
-        .text(`Population`)
         .append(`g`)
         .attr(`transform`, `translate(30,0)`);
 
