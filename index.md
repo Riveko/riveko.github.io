@@ -35,7 +35,7 @@
 		display: none;
 	}
 
-    #divStoryBox p {
+    #divStoryBox #divChart #divMap p {
         margin: 0;
         font-family: sans-serif;
         font-size: 12px;
@@ -136,9 +136,9 @@
         .attr(`transform`, `translate(30,30)`);
 
     //Create bar chart svg element, scales and axes
-    const chartMargin = { top: 10, right: 10, bottom: 20, left: 40 };
+    const chartMargin = { top: 10, right: 10, bottom: 10, left: 40 };
     const chartWidth = 350 - chartMargin.left - chartMargin.right;
-    const chartHeight = 100 - chartMargin.top - chartMargin.bottom;
+    const chartHeight = 60 - chartMargin.top - chartMargin.bottom;
     const barHeight = 20;
 
     const svgChart = d3
@@ -147,7 +147,7 @@
         .attr(`width`, chartWidth + chartMargin.left + chartMargin.right)
         .attr(`height`, chartHeight + chartMargin.top + chartMargin.bottom)
         .append(`g`)
-        .attr(`transform`, `translate(30,0)`);
+        .attr(`transform`, `translate(15,0)`);
 
 
     const xScale = d3.scaleLinear()
