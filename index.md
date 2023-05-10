@@ -100,7 +100,7 @@
 
     let decadeValue = 2020;
     let dataset = baseDataset.slice(0,decades.indexOf(decadeValue)+1);
-    let decadeValueDataObject = baseDataset[decades.indexOf(decadeValue)];
+    let decadeValueDataObject = [baseDataset[decades.indexOf(decadeValue)]];
     const maxPopulation = d3.max(baseDataset, d => d.population);
 
     const w = 350;
@@ -184,7 +184,7 @@
     function populationChart() {
 console.log(decadeValueDataObject);
         svgChart.selectAll(`rect`)
-            .data(decadeValueDataObject, key)
+            .data(decadeValueDataObject)
             .enter()
             .append(`rect`)
             .attr(`x`, 0)
