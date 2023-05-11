@@ -17,7 +17,7 @@
     }
 
     #divStoryBox {
-        width: 320px;
+        width: 280px;
         height: auto;
         padding: 10px;
         background-color: #fede95;
@@ -124,7 +124,7 @@
         .sliderBottom()
         .min(d3.min(decades))
         .max(d3.max(decades))
-        .width(250)
+        .width(260)
         .fill(`#004529`)
         .tickFormat(d3.format('d'))
         .ticks(4)
@@ -139,9 +139,9 @@
         .select(`div#slider-step`)
         .append(`svg`)
         .attr(`width`, 300)
-        .attr(`height`, 80)
+        .attr(`height`, 70)
         .append(`g`)
-        .attr(`transform`, `translate(20,20)`);
+        .attr(`transform`, `translate(30,20)`);
 
     //Create bar chart svg element, scales and axes
     const chartMargin = { top: 10, right: 10, bottom: 10, left: 10 };
