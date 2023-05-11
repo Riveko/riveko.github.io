@@ -20,8 +20,8 @@
         margin: 20px 10px 10px 10px;
         font-family: sans-serif;
         font-size: 14px;
-        font-weight: 400;
-        color: #494949; 
+        font-weight: 700;
+        color: #222; 
     }
 
     #divChart p, #divMap p {
@@ -29,7 +29,8 @@
         font-family: sans-serif;
         font-size: 12px;
         line-height: 16px;
-        color: #494949;     
+        font-weight: 400;
+        color: #222;     
     }
     
     .propertylabel {
@@ -44,7 +45,7 @@
         width: 300px;
         height: auto;
         padding: 10px;
-        background-color: #f2e0b6;
+        background-color: #f2ecdf;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px;
