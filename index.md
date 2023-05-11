@@ -271,7 +271,34 @@
         if (decadeValue != decades[dataset.length - 1]) {
             dataset = baseDataset.slice(0,decades.indexOf(decadeValue)+1);
         }
-        yScale.domain([0, d3.max(baseDataset, function(d) { return d.population; })]);
+        
+        //Update chart to reflect selected decade    
+        decadeValueDataObject = [baseDataset[decades.indexOf(decadeValue)]];
+        yScale.domain([decadeValueDataObject.decade]);
+
+        const bar = svgChart.selectAll("rect")
+            .data(decadeValueDataObject);
+
+       bar.enter()
+            .append("rect")
+            .attr(`x`, chartWidth)
+            .attr(`y`, d => yScale(d.decade))
+            .attr(`height`, barHeight)
+            .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
+            .attr(`fill`, d => colors[d.key]);        
+            .merge(bar)
+            .transition()
+            .duration(200)
+            .attr(`x`, 0)
+            .attr(`y`, d => yScale(d.decade))
+            .attr(`height`, barHeight)
+            .attr(`width`,d => ( d.population * chartWidth / maxPopulation ));
+      
+        bar.exit()
+            .transition()
+            .duration(200)
+            .attr("x", -xScale.bandwidth())
+            .remove();
 
         // change map to reflect selected decade
         svgMap.selectAll("path")
@@ -300,41 +327,6 @@
         
         //Display the story text box
         d3.select("#divStoryBox").classed("hidden", false);
-
-        //Update chart to reflect selected decade				
-        const bars = svgChart.selectAll("rect")
-            .data(dataset, key);
-        
-        bars.enter()
-            .append("rect")
-            .attr("x", function(d, i) {
-                return xScale(i);
-            })
-            .attr("y", h)
-            .attr("width", xScale.bandwidth())
-            .attr("height", 0)
-            .attr("fill", function(d) {
-                return colors[d.key];
-            })
-            .merge(bars)
-            .transition()
-            .duration(200)
-            .attr("x", function(d, i) {
-                return xScale(i);
-            })
-            .attr("y", function(d) {
-                return h - yScale(d.population);
-            })
-            .attr("width", xScale.bandwidth())
-            .attr("height", function(d) {
-                return yScale(d.population);
-            });
-        
-        bars.exit()
-            .transition()
-            .duration(200)
-            .attr("y", h)
-            .remove();
             
     }			
     
