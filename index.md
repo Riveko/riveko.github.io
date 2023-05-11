@@ -17,7 +17,7 @@
     }
 
     #divStoryBox {
-        width: 300px;
+        width: 330px;
         height: auto;
         padding: 10px;
         background-color: #fcf0e5;
@@ -46,8 +46,8 @@
         background: url(/images/paper.gif);
         background-position: left top;
         background-repeat: repeat;
-        padding: 20px; 
-        width: 380px;
+        padding: 10px; 
+        width: 350px;
         height: auto;  
     }
 
