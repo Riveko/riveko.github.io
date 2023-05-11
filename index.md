@@ -17,7 +17,6 @@
     }
 
     #divStoryBox {
-        position: absolute; 
         width: 300px;
         height: auto;
         padding: 10px;
