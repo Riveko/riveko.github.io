@@ -199,7 +199,7 @@
             .attr(`y`, d => yScale(d.decade))
             .attr(`height`, barHeight)
             .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
-            .attr(`fill`, d => colors[d.key]);
+            .attr(`fill`, d => d.key);
 
     }
     
@@ -285,7 +285,7 @@
             .attr(`y`, d => yScale(d.decade))
             .attr(`height`, barHeight)
             .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
-            .attr(`fill`, d => colors[d.key])
+            .attr(`fill`, d => d.key)
             .merge(bar)
             .transition()
             .duration(200)
