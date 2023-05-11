@@ -17,7 +17,7 @@
     }
 
     #divStoryBox {
-        width: 300px;
+        width: 330px;
         height: auto;
         padding: 10px;
         background-color: #fcf0e5;
