@@ -46,8 +46,8 @@
         background: url(/images/paper.gif);
         background-position: left top;
         background-repeat: repeat;
-        padding: 20px; 
-        width: 380px;
+        padding: 10px; 
+        width: 350px;
         height: auto;  
     }
 
