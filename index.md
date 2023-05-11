@@ -17,7 +17,7 @@
     }
 
     #divStoryBox {
-        width: 300px;
+        width: 280px;
         height: auto;
         padding: 10px;
         background-color: #fede95;
@@ -124,7 +124,7 @@
         .sliderBottom()
         .min(d3.min(decades))
         .max(d3.max(decades))
-        .width(250)
+        .width(260)
         .fill(`#004529`)
         .tickFormat(d3.format('d'))
         .ticks(4)
