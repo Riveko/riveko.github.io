@@ -41,6 +41,10 @@
         line-height: 16px;    
     }
 
+    #d3div {
+        background-color: #f5deb3;
+    }
+
 </style>
 
 <div id="d3div">
@@ -290,7 +294,8 @@
             .attr(`x`, 0)
             .attr(`y`, d => yScale(d.decade))
             .attr(`height`, barHeight)
-            .attr(`width`,d => ( d.population * chartWidth / maxPopulation ));
+            .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
+            .attr(`fill`, d => d.color);
       
  /*       bar.exit()
             .transition()
