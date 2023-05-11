@@ -16,11 +16,20 @@
         height: auto;  
     }
 
+    #d3div h4 {
+        margin: 20px 10px 10px 10px;
+        font-family: sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #494949; 
+    }
+
     #divChart p, #divMap p {
         margin: 0px 0px 0px 20px;
         font-family: sans-serif;
         font-size: 12px;
-        line-height: 16px;    
+        line-height: 16px;
+        color: #494949;     
     }
     
     .propertylabel {
