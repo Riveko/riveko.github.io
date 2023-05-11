@@ -320,7 +320,7 @@
                 if (value && value <= decadeValue) {
                     return colors[decades.indexOf(value)];
                 } else {            //If property decade does not exist or is > input decade
-                    return "#004529";
+                    return "transparent";
             }});
 
         //Update the story text box with text and images relevant to the selected decade
