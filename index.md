@@ -240,7 +240,7 @@
                     if (value && value <= decadeValue) {
                         return colors[decades.indexOf(value)];
                     } else {            // If property decade does not exist or is > input decade
-                        return "none";
+                        return "transparent";
                     }
                 });
 
