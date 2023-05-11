@@ -20,7 +20,7 @@
         width: 300px;
         height: auto;
         padding: 10px;
-        background-color: #f5deb3;
+        background-color: #fcf0e5;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px;
@@ -42,7 +42,13 @@
     }
 
     #d3div {
-        background-color: #fcf0e5;
+        border-radius: 25px;
+        background: url(paper.gif);
+        background-position: left top;
+        background-repeat: repeat;
+        padding: 20px; 
+        width: 380px;
+        height: auto;  
     }
 
 </style>
@@ -217,7 +223,7 @@
                     if (value && value <= decadeValue) {
                         return colors[decades.indexOf(value)];
                     } else {            // If property decade does not exist or is > input decade
-                        return "#fcf0e5";
+                        return "#004529";
                     }
                 });
 
