@@ -6,8 +6,25 @@
 
 [Rangiora township growth since 1840](/sample_page)
 
-<style type="text/css">
-			
+<style type="text/css">	
+    
+    #d3div {
+        border-radius: 25px;
+        background: url(/images/paper.gif);
+        background-position: left top;
+        background-repeat: repeat;
+        padding: 10px; 
+        width: 320px;
+        height: auto;  
+    }
+
+    #divChart p, #divMap p {
+        margin: 0px 0px 0px 20px;
+        font-family: sans-serif;
+        font-size: 12px;
+        line-height: 16px;    
+    }
+    
     .propertylabel {
 		font-family: Helvetica, sans-serif;
 		font-size: 4px;
@@ -17,7 +34,7 @@
     }
 
     #divStoryBox {
-        width: 280px;
+        width: 290px;
         height: auto;
         padding: 10px;
         background-color: #fede95;
@@ -34,21 +51,11 @@
 		display: none;
 	}
 
-    #divStoryBox p, #divChart p, #divMap p {
+    #divStoryBox p {
         margin: 0;
         font-family: sans-serif;
         font-size: 12px;
         line-height: 16px;    
-    }
-
-    #d3div {
-        border-radius: 25px;
-        background: url(/images/paper.gif);
-        background-position: left top;
-        background-repeat: repeat;
-        padding: 10px; 
-        width: 320px;
-        height: auto;  
     }
 
 </style>
@@ -138,7 +145,7 @@
     const gStep = d3	
         .select(`div#slider-step`)
         .append(`svg`)
-        .attr(`width`, 300)
+        .attr(`width`, 310)
         .attr(`height`, 70)
         .append(`g`)
         .attr(`transform`, `translate(30,20)`);
