@@ -4,8 +4,6 @@
 
 ### Data Visualisation - Infographic 
 
-[Rangiora township growth since 1840](/sample_page)
-
 <style type="text/css">	
     
     #d3div {
@@ -34,10 +32,10 @@
     }
 
     #divStoryBox {
-        width: 290px;
+        width: 300px;
         height: auto;
         padding: 10px;
-        background-color: #f5f1e9;
+        background-color: #f2e0b6;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px;
@@ -61,7 +59,9 @@
 </style>
 
 <div id="d3div">
-    <!-- Step slider-->
+    <!-- Infographic title -->
+    <h4><a href="/sample_page">Rangiora township growth since 1840</a></h4>
+    <!-- Step slider -->
     <div class="row align-items-center">
         <div class="col-sm">
             <div id="slider-step"></div>
