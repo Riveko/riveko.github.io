@@ -16,21 +16,21 @@
         height: auto;  
     }
 
-    #d3div h4 {
+    #d3div h4 a {
         margin: 20px 10px 10px 10px;
         font-family: sans-serif;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 400;
         color: #222; 
     }
 
     #divChart p, #divMap p {
         margin: 0px 0px 0px 20px;
         font-family: sans-serif;
-        font-size: 12px;
         line-height: 16px;
-        font-weight: 400;
-        color: #222;     
+        font-size: 12px;
+        font-weight: 300;
+        color: #222; 
     }
     
     .propertylabel {
@@ -79,11 +79,11 @@
     </div>	
         <!-- Population bar chart -->
     <div id="divChart">
-        <p><span style="font-size: 12px; color: #8d918d">Population</span></p>
+        <p>Population</p>
     </div>
     <!-- Properties map -->
     <div id="divMap">
-        <p><span style="font-size: 12px; color: #8d918d">Property growth</span></p>
+        <p>Property growth</p>
     </div>
     <!-- Story box for text and images -->
     <div id="divStoryBox" >
