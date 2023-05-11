@@ -2,7 +2,7 @@
 
 ---
 
-### Data Analysis 
+### Data Visualisation - Infographic 
 
 [Rangiora township growth since 1840](/sample_page)
 
@@ -17,7 +17,7 @@
     }
 
     #divStoryBox {
-        width: 300px;
+        width: 320px;
         height: auto;
         padding: 10px;
         background-color: #fede95;
@@ -182,7 +182,7 @@
     const projection = d3
         .geoMercator()
         .scale([340000])
-        .center([172.64, -43.317]);
+        .center([172.642, -43.319]);
 
     const path = d3.geoPath(projection);
     
@@ -340,6 +340,8 @@
     runInfographic();
 
 </script>
+
+<br/>
 
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
