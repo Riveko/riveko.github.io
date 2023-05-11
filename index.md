@@ -20,7 +20,7 @@
         width: 300px;
         height: auto;
         padding: 10px;
-        background-color: white;
+        background-color: #f5deb3;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px;
@@ -42,7 +42,7 @@
     }
 
     #d3div {
-        background-color: #f5deb3;
+        background-color: #fcf0e5;
     }
 
 </style>
@@ -112,7 +112,6 @@
 
     const w = 350;
     const h = 350;
-
     
     //Set up step slider control svg
     const sliderStep = d3
@@ -173,8 +172,6 @@
         .call(yAxis)
         .call(g => g.select(`.domain`).remove());
 
- //   const key = (d) => d.key;
-
     //Define path generator, using the geoMercator projection
     const projection = d3
         .geoMercator()
@@ -192,7 +189,6 @@
              
     //Function - add bar to population bar chart svg
     function populationChart() {
-
         svgChart.selectAll(`rect`)
             .data(decadeValueDataObject)
             .enter()
@@ -202,12 +198,10 @@
             .attr(`height`, barHeight)
             .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
             .attr(`fill`, d => d.color);
-
     }
     
     //Function - set up properties map svg
     function propertyMap () {
-
         d3.json("/data/rangiora_property_titles.json").then(json => {				
 
             //Bind data and create one path per property
@@ -223,7 +217,7 @@
                     if (value && value <= decadeValue) {
                         return colors[decades.indexOf(value)];
                     } else {            // If property decade does not exist or is > input decade
-                        return "#004529";
+                        return "#fcf0e5";
                     }
                 });
 
@@ -242,13 +236,11 @@
                     }
                 });
 
-        }).catch( err => {console.log(err)});
-        
+        }).catch( err => {console.log(err)});   
     }
                 
     //Function - set up story box svg
     function storyBox () {
-
         d3.select(`#divStoryBox`)
             .select(`#storyBoxTitle`)
             .text(decadeValue + `'s population: ` + dataset[decades.indexOf(decadeValue)].population);
@@ -262,8 +254,7 @@
             .text(decadeValue < 1980 ? `Source: Rangiora by D.N Hawkins, Rangiora Borough Council 1983` : ``);
             
         //Display the story box
-        d3.select(`#divStoryBox`).classed(`hidden`, false);
-        
+        d3.select(`#divStoryBox`).classed(`hidden`, false);    
     }
     
     //Function - redraw map svg and bar chart on change of decade in slider control
@@ -274,7 +265,7 @@
             dataset = baseDataset.slice(0,decades.indexOf(decadeValue)+1);
         }
         
-        //Update chart to reflect selected decade    
+        //Update bar chart to reflect population early in the selected decade    
         decadeValueDataObject = [baseDataset[decades.indexOf(decadeValue)]];
         yScale.domain([decadeValueDataObject.decade]);
 
@@ -297,13 +288,7 @@
             .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
             .attr(`fill`, d => d.color);
       
- /*       bar.exit()
-            .transition()
-            .duration(200)
-            .attr("x", -xScale.bandwidth())
-            .remove();
-*/
-        // change map to reflect selected decade
+        // change map to reflect property titles issued up to and including the selected decade
         svgMap.selectAll("path")
             .transition()
             .attr("fill", function(d,i) {
@@ -315,7 +300,7 @@
                     return "#004529";
             }});
 
-        //Update the story text box
+        //Update the story text box with text and images relevant to the selected decade
         d3.select(`#divStoryBox`)
             .select(`#storyBoxTitle`)
             .text(decadeValue + `'s population: ` + dataset[decades.indexOf(decadeValue)].population);
