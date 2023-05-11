@@ -41,6 +41,10 @@
         line-height: 16px;    
     }
 
+    #d3div {
+        background-color: #f5deb3;
+    }
+
 </style>
 
 <div id="d3div">
