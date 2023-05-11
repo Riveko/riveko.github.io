@@ -17,7 +17,7 @@
     }
 
     #divStoryBox {
-        position: absolute;
+        position: absolute; 
         width: 300px;
         height: auto;
         padding: 10px;
@@ -149,7 +149,6 @@
         .append(`g`)
         .attr(`transform`, `translate(20,0)`);
 
-
     const xScale = d3.scaleLinear()
         .domain([0, maxPopulation])
         .range([0, chartWidth]);
@@ -171,7 +170,7 @@
         .call(yAxis)
         .call(g => g.select(`.domain`).remove());
 
-    const key = (d) => d.key;
+ /*   const key = (d) => d.key;
 
     //Define path generator, using the geoMercator projection
     const projection = d3
@@ -199,7 +198,7 @@
             .attr(`y`, d => yScale(d.decade))
             .attr(`height`, barHeight)
             .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
-            .attr(`fill`, d => d.key);
+            .attr(`fill`, d => d.color);
 
     }
     
@@ -285,7 +284,7 @@
             .attr(`y`, d => yScale(d.decade))
             .attr(`height`, barHeight)
             .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
-            .attr(`fill`, d => d.key)
+            .attr(`fill`, d => d.color)
             .merge(bar)
             .transition()
             .duration(200)
