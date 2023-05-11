@@ -199,7 +199,7 @@
             .attr(`y`, d => yScale(d.decade))
             .attr(`height`, barHeight)
             .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
-            .attr(`fill`, d => colors[d.key]);
+            .attr(`fill`, d => d.key);
 
     }
     
@@ -285,7 +285,7 @@
             .attr(`y`, d => yScale(d.decade))
             .attr(`height`, barHeight)
             .attr(`width`,d => ( d.population * chartWidth / maxPopulation ))
-            .attr(`fill`, d => colors[d.key])
+            .attr(`fill`, d => d.key)
             .merge(bar)
             .transition()
             .duration(200)
@@ -294,12 +294,12 @@
             .attr(`height`, barHeight)
             .attr(`width`,d => ( d.population * chartWidth / maxPopulation ));
       
-        bar.exit()
+ /*       bar.exit()
             .transition()
             .duration(200)
             .attr("x", -xScale.bandwidth())
             .remove();
-
+*/
         // change map to reflect selected decade
         svgMap.selectAll("path")
             .transition()
