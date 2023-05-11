@@ -17,7 +17,7 @@
     }
 
     #divStoryBox {
-        width: 330px;
+        width: 300px;
         height: auto;
         padding: 10px;
         background-color: #fede95;
@@ -47,7 +47,7 @@
         background-position: left top;
         background-repeat: repeat;
         padding: 10px; 
-        width: 350px;
+        width: 320px;
         height: auto;  
     }
 
@@ -116,15 +116,15 @@
     let decadeValueDataObject = [baseDataset[decades.indexOf(decadeValue)]];
     const maxPopulation = d3.max(baseDataset, d => d.population);
 
-    const w = 350;
-    const h = 350;
+    const w = 300;
+    const h = 300;
     
     //Set up step slider control svg
     const sliderStep = d3
         .sliderBottom()
         .min(d3.min(decades))
         .max(d3.max(decades))
-        .width(300)
+        .width(250)
         .fill(`#004529`)
         .tickFormat(d3.format('d'))
         .ticks(4)
@@ -138,14 +138,14 @@
     const gStep = d3	
         .select(`div#slider-step`)
         .append(`svg`)
-        .attr(`width`, 350)
+        .attr(`width`, 300)
         .attr(`height`, 80)
         .append(`g`)
-        .attr(`transform`, `translate(30,30)`);
+        .attr(`transform`, `translate(20,20)`);
 
     //Create bar chart svg element, scales and axes
-    const chartMargin = { top: 10, right: 10, bottom: 10, left: 40 };
-    const chartWidth = 350 - chartMargin.left - chartMargin.right;
+    const chartMargin = { top: 10, right: 10, bottom: 10, left: 10 };
+    const chartWidth = 300 - chartMargin.left - chartMargin.right;
     const chartHeight = 60 - chartMargin.top - chartMargin.bottom;
     const barHeight = 20;
 
