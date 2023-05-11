@@ -37,7 +37,7 @@
         width: 290px;
         height: auto;
         padding: 10px;
-        background-color: #fede95;
+        background-color: #f5f1e9;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px;
