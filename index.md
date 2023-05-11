@@ -169,7 +169,7 @@
         .call(yAxis)
         .call(g => g.select(`.domain`).remove());
 
- /*   const key = (d) => d.key;
+ //   const key = (d) => d.key;
 
     //Define path generator, using the geoMercator projection
     const projection = d3
@@ -324,7 +324,7 @@
             .text(decadeValue < 1980 ? `Source: Rangiora by D.N Hawkins, Rangiora Borough Council 1983` : ``);
         
         //Display the story text box
-        d3.select("#divStoryBox").classed("hidden", false);
+        d3.select("#divStoryBox").classed(`hidden`, false);
             
     }			
     
