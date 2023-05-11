@@ -43,7 +43,7 @@
 
     #d3div {
         border-radius: 25px;
-        background: url(paper.gif);
+        background: url(/images/paper.gif);
         background-position: left top;
         background-repeat: repeat;
         padding: 20px; 
