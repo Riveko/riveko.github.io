@@ -25,12 +25,13 @@
         text-align: center;
         font-size: 15px;
         cursor: pointer;
+        border: 0;
         background: transparent;
     }
 
     #play-range {
         margin: 2.5%;
-        width: 90%;
+        width: 80%;
         accent-color: #004529;
     }
 
