@@ -5,7 +5,41 @@
 ### Data Visualisation - Infographic 
 
 <style type="text/css">	
-    
+  
+    #play-controls {
+        text-align: center;
+        min-width: 310px;
+        max-width: 310px;
+        margin: 0 auto;
+        padding: 5px 0 1em;
+    }
+
+    #play-controls * {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #play-pause-button {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        font-size: 15px;
+        cursor: pointer;
+        border: 1px solid silver;
+        border-radius: 3px;
+        background: #f8f8f8;
+    }
+
+    #play-range {
+        margin: 2.5%;
+        width: 70%;
+        accent-color: #004529;
+    }
+
+    #play-output {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
     #d3div {
         border-radius: 25px;
         background: url(/images/paper.gif);
@@ -71,6 +105,11 @@
 <div id="d3div">
     <!-- Infographic title -->
     <h4><a href="/sample_page">Rangiora township growth since 1840</a></h4>
+    <div id="play-controls">
+        <button id="play-pause-button" class="fa fa-play" title="play"></button>
+        <input id="play-range" type="range" value="2020" min="1840" max="2020" step="10">
+        <output id="play-output" for="play-range" name="year"></output>
+    </div>
     <!-- Step slider -->
     <div class="row align-items-center">
         <div class="col-sm">
@@ -96,6 +135,7 @@
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://unpkg.com/d3-simple-slider"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
 
     //Define Global variables
