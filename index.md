@@ -8,8 +8,8 @@
   
     #play-controls {
         text-align: left;
-        min-width: 330px;
-        max-width: 330px;
+        min-width: 350px;
+        max-width: 350px;
         margin: 0 auto;
         padding: 5px 0 1em;
     }
@@ -27,7 +27,7 @@
         cursor: pointer;
         border: 1px solid silver;
         border-radius: 3px;
-        background: #004529;
+        background: #efce85;
     }
 
     #play-range {
