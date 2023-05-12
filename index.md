@@ -7,9 +7,9 @@
 <style type="text/css">	
   
     #play-controls {
-        text-align: center;
-        min-width: 310px;
-        max-width: 310px;
+        text-align: left;
+        min-width: 330px;
+        max-width: 330px;
         margin: 0 auto;
         padding: 5px 0 1em;
     }
@@ -27,7 +27,7 @@
         cursor: pointer;
         border: 1px solid silver;
         border-radius: 3px;
-        background: #f8f8f8;
+        background: #004529;
     }
 
     #play-range {
