@@ -50,8 +50,7 @@
     }
 
     #d3div h4 a {
-        margin: 20px 10px 10px 10px;
-        text-align: center;
+        margin: 10px 10px 10px 40px;
         font-family: sans-serif;
         font-size: 14px;
         font-weight: 400;
