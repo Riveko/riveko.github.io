@@ -8,8 +8,8 @@
   
     #play-controls {
         text-align: left;
-        min-width: 380px;
-        max-width: 380px;
+        min-width: 320px;
+        max-width: 320px;
         margin: 0 auto;
         padding: 5px 0 1em;
     }
@@ -30,7 +30,7 @@
 
     #play-range {
         margin: 2.5%;
-        width: 70%;
+        width: 90%;
         accent-color: #004529;
     }
 
