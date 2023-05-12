@@ -8,8 +8,8 @@
   
     #play-controls {
         text-align: left;
-        min-width: 350px;
-        max-width: 350px;
+        min-width: 320px;
+        max-width: 320px;
         margin: 0 auto;
         padding: 5px 0 1em;
     }
@@ -25,14 +25,12 @@
         text-align: center;
         font-size: 15px;
         cursor: pointer;
-        border: 1px solid silver;
-        border-radius: 3px;
-        background: #efce85;
+        background: transparent;
     }
 
     #play-range {
         margin: 2.5%;
-        width: 70%;
+        width: 90%;
         accent-color: #004529;
     }
 
@@ -52,6 +50,7 @@
 
     #d3div h4 a {
         margin: 20px 10px 10px 10px;
+        text-align: center;
         font-family: sans-serif;
         font-size: 14px;
         font-weight: 400;
