@@ -49,7 +49,7 @@
     }
 
     #d3div h4 a {
-        margin: 10px 10px 10px 40px;
+        margin: 10px 10px 10px 35px;
         font-family: sans-serif;
         font-size: 14px;
         font-weight: 600;
