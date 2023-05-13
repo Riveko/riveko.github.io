@@ -53,7 +53,7 @@
         font-family: sans-serif;
         font-size: 14px;
         font-weight: 600;
-        color: #0425ad; 
+        color: #069; 
     }
 
     #divChart p, #divMap p {
@@ -62,7 +62,7 @@
         line-height: 16px;
         font-size: 12px;
         font-weight: 300;
-        color: #0425ad; 
+        color: #069; 
     }
     
     .propertylabel {
@@ -124,8 +124,8 @@
     </div>
     <!-- Story box for text and images -->
     <div id="divStoryBox" >
-        <p><strong><span id="storyBoxTitle"></span></strong></p>
-        <p><span id="storyBoxText" style="color: #0425ad"></span></p>
+        <p><strong><span id="storyBoxTitle" style="color: #069"></span></strong></p>
+        <p><span id="storyBoxText"></span></p>
         <img src="/images/rangiora_high_street.png" alt="Farmers Co-op store" height="90px" width="160px">
         <p><span id="storyBoxCitation" style="font-size: 9px; color: #8d918d"></span></p>
     </div>
