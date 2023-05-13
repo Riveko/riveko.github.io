@@ -25,6 +25,7 @@
         text-align: center;
         font-size: 15px;
         cursor: pointer;
+        color: #222;
         border: 0;
         background: transparent;
     }
@@ -41,9 +42,7 @@
 
     #d3div {
         border-radius: 25px;
-        background: url(/images/paper.gif);
-        background-position: left top;
-        background-repeat: repeat;
+        background: #e4dbcd;
         padding: 10px; 
         width: 320px;
         height: auto;  
@@ -53,7 +52,7 @@
         margin: 10px 10px 10px 40px;
         font-family: sans-serif;
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 600;
         color: #222; 
     }
 
