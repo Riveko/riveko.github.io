@@ -126,6 +126,7 @@
             <option>1900</option>
             <option>1950</option>
             <option>2000</option>
+        </datalist>
         <output id="play-output" for="play-range" name="year"></output>
     </div>
     <!-- Step slider -->
