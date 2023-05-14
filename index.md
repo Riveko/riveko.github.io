@@ -40,6 +40,21 @@
         font-family: Arial, Helvetica, sans-serif;
     }
 
+    input[type="range"]::-moz-range-track {
+        padding: 0 10px;
+        background: repeating-linear-gradient(to right, 
+            #ccc, 
+            #ccc 10%, 
+            #000 10%, 
+            #000 11%, 
+            #ccc 11%, 
+            #ccc 20%);
+	}
+	
+	#steplist {
+		display: none;
+	}
+
     #d3div {
         border-radius: 25px;
         background: #e4dbcd;
@@ -105,7 +120,12 @@
     <h4><a href="/sample_page">Rangiora township growth since 1840</a></h4>
     <div id="play-controls">
         <button id="play-pause-button" class="fa fa-play" title="play"></button>
-        <input id="play-range" type="range" value="2020" min="1840" max="2020" step="10">
+        <input id="play-range" type="range" value="2020" min="1840" max="2020" step="10" list="steplist">
+        <datalist id="steplist">
+            <option>1850</option>
+            <option>1900</option>
+            <option>1950</option>
+            <option>2000</option>
         <output id="play-output" for="play-range" name="year"></output>
     </div>
     <!-- Step slider -->
