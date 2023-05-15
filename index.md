@@ -26,7 +26,7 @@
 	#slider-control-values {
 		width: 270px;
 		margin: 0px 10px 0px 30px;
-		font-size: 9px;
+		font-size: 10px;
         font-weight: 600;
 		color: #8d918d;
 	}
