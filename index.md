@@ -145,8 +145,8 @@
         </datalist>
         <output id="play-output" for="play-range" name="year"></output>
         <div id="slider-control-values">
-            <div class="align-left">1840</div>
-            <div class="align-right">2020</div>
+            <div class="align-left">1840's</div>
+            <div class="align-right">2020's</div>
             <div style="clear: both;"></div>
         </div>
     </div>
