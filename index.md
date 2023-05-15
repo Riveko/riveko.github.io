@@ -406,13 +406,16 @@
     
     //Function - redraw Infograph on change of decade in slider control
     //(this happens either on manually moving the range input on the slider, or from a timer when the slider is played automatically)
-    function redraw() {
+    function redraw(slideMode) {
 
         const lastKeyValue = dataset.length - 1;
         if (decadeValue != decades[dataset.length - 1]) {
             dataset = baseDataset.slice(0,decades.indexOf(decadeValue)+1);
         }
         
+        const input = document.querySelector('#play-range');
+        const output = document.querySelector('#play-output');
+
         if (slideMode = `autoSlide`) {
 			input.value = decadeValue;
 		}
