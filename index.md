@@ -384,7 +384,8 @@
 
         //Update bar chart to reflect population early in the selected decade    
         decadeValueDataObject = [baseDataset[decades.indexOf(decadeValue)]];
-        yScale.domain([decadeValueDataObject.decade]);
+        yScale.domain([decadeValue])
+            .padding(0.15);
 
         const bar = svgChart.selectAll("rect")
             .data(decadeValueDataObject);
