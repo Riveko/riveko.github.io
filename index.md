@@ -148,7 +148,6 @@
             <div class="align-right">2020</div>
             <div style="clear: both;"></div>
         </div>
-
     </div>
     <!-- Step slider -->
     <div class="row align-items-center">
