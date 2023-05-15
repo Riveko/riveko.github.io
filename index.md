@@ -20,7 +20,7 @@
     }
 
 	#slider-control-values {
-		width: 260px;
+		width: 270px;
 		margin: 0px 10px 0px 30px;
 		font-size: 9px;
 		color: #8d918d;
