@@ -19,6 +19,21 @@
         vertical-align: middle;
     }
 
+	#slider-control-values {
+		width: 260px;
+		margin: 0px 10px 0px 30px;
+		font-size: 9px;
+		color: #8d918d;
+	}
+	
+	.align-left {
+		float: left;
+	}
+	
+	.align-right {
+		float: right;
+	}
+
     #play-pause-button {
         width: 20px;
         height: 20px;
@@ -128,6 +143,11 @@
             <option>2000</option>
         </datalist>
         <output id="play-output" for="play-range" name="year"></output>
+        <div id="slider-control-values">
+            <div class="align-left">1840</div>
+            <div class="align-right">2020</div>
+            <div style="clear: both;"></div>
+        </div>
     </div>
     <!-- Step slider -->
     <div class="row align-items-center">
