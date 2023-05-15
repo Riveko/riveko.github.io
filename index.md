@@ -2,7 +2,7 @@
 
 ---
 
-### Data Visualisation - Infographic 
+### Interactive Data Visualisation - Infographic 
 
 <style type="text/css">	
   
@@ -134,6 +134,7 @@
 <div id="d3div">
     <!-- Infographic title -->
     <h4><a href="/sample_page">Rangiora township growth since 1840</a></h4>
+    <!-- Step slider with play/pause automation -->
     <div id="play-controls">
         <button id="play-pause-button" class="fa fa-play" title="play"></button>
         <input id="play-range" type="range" value="2020" min="1840" max="2020" step="10" list="steplist">
@@ -150,13 +151,7 @@
             <div style="clear: both;"></div>
         </div>
     </div>
-    <!-- Step slider -->
-    <div class="row align-items-center">
-        <div class="col-sm">
-            <div id="slider-step"></div>
-        </div>
-    </div>	
-        <!-- Population bar chart -->
+    <!-- Population bar chart -->
     <div id="divChart">
         <p>Population</p>
     </div>
@@ -174,7 +169,6 @@
 </div>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="https://unpkg.com/d3-simple-slider"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript">
 
@@ -220,8 +214,7 @@
     const playBtn = document.querySelector(`#play-pause-button`);
     let sliderTimer = undefined;
 
-    //Autoplay the slider, redrawing the Infograph at each step along the slider
-    function play(button) {
+    function play(button) {         //Autoplay the slider, redrawing the Infograph at each slider step
         button.title = `pause`;
         button.className = `fa fa-pause`;
         sliderTimer = setInterval(function () {
@@ -234,17 +227,14 @@
         }, 5000);
     }
 
-    //Pause the slider, either when manually moving the slider or when clicking the pause button
-    //Pausing stops the timer and resets the button to play mode
-    function pause(button) {
+    function pause(button) {        //Pause the slider, either when manually moving the slider or when clicking the pause button
         button.title = `play`;
         button.className = `fa fa-play`;
         clearTimeout(sliderTimer);
         sliderTimer = undefined;
     }
-
-    //Toggle play and pause from the button
-    playBtn.addEventListener('click', function () {
+    
+    playBtn.addEventListener('click', function () {     //Toggle play and pause when the button has been clicked
         if (sliderTimer === undefined) {
             play(this);
         } else {
@@ -252,37 +242,12 @@
         }
     });
 
-    //Redraw the Infograph when the input is manually changed
-    document.querySelector(`#play-range`).addEventListener(`input`, function (e) {
+    document.querySelector(`#play-range`).addEventListener(`input`, function (e) {      //Redraw the Infograph when the input has been manually changed
         pause(playBtn);
         decadeValue = parseInt(e.target.value);
         redraw(`manualSlide`);
     });
 			
-    //Set up step slider control svg
-    const sliderStep = d3
-        .sliderBottom()
-        .min(d3.min(decades))
-        .max(d3.max(decades))
-        .width(260)
-        .fill(`#004529`)
-        .tickFormat(d3.format('d'))
-        .ticks(4)
-        .step(10)
-        .default(decadeValue)
-        .on(`onchange`, function(d) {
-            decadeValue = d;
-            redraw();
-        });
-
-    const gStep = d3	
-        .select(`div#slider-step`)
-        .append(`svg`)
-        .attr(`width`, 310)
-        .attr(`height`, 70)
-        .append(`g`)
-        .attr(`transform`, `translate(30,20)`);
-
     //Create bar chart svg element, scales and axes
     const chartMargin = { top: 10, right: 10, bottom: 10, left: 10 };
     const chartWidth = 300 - chartMargin.left - chartMargin.right;
@@ -404,7 +369,7 @@
     }
     
     //Function - redraw Infograph on change of decade in slider control
-    //(this happens either on manually moving the range input on the slider, or from a timer when the slider is played automatically)
+    //(this happens either by manually moving the range input on the slider, or from a timer when the slider is played automatically)
     function redraw(slideMode) {
 
         const lastKeyValue = dataset.length - 1;
@@ -472,8 +437,6 @@
     
     //Function - main function that runs each of the component functions
     function runInfographic () {
-    
-  //      gStep.call(sliderStep);	//Runs the slider step control
 
         populationChart();		//Sets up initial display of the population bar chart	
         
