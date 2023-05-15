@@ -224,7 +224,7 @@
                 decadeValue += 10;
             }
             redraw(`autoSlide`);
-        }, 5000);
+        }, 1500);
     }
 
     function pause(button) {        //Pause the slider, either when manually moving the slider or when clicking the pause button
