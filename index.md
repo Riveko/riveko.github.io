@@ -19,6 +19,10 @@
         vertical-align: middle;
     }
 
+	#steplist {
+		display: none;
+	}
+    
 	#slider-control-values {
 		width: 270px;
 		margin: 0px 10px 0px 30px;
@@ -65,10 +69,6 @@
             #000 11%, 
             #ccc 11%, 
             #ccc 20%);
-	}
-	
-	#steplist {
-		display: none;
 	}
 
     #d3div {
