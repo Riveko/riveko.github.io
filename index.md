@@ -22,7 +22,7 @@
 	#steplist {
 		display: none;
 	}
-    
+
 	#slider-control-values {
 		width: 270px;
 		margin: 0px 10px 0px 30px;
@@ -216,6 +216,50 @@
     const w = 300;
     const h = 300;
     
+    //HTML step slider control with play/pause button
+    const playBtn = document.querySelector(`#play-pause-button`);
+    let sliderTimer = undefined;
+
+
+    //Autoplay the slider, redrawing the Infograph at each step along the slider
+    function play(button) {
+        button.title = `pause`;
+        button.className = `fa fa-pause`;
+        sliderTimer = setInterval(function () {
+            if (decadeValue >= decades[decades.length - 1]) {
+                decadeValue = decades[0];
+            } else {
+                decadeValue += 10;
+            }
+            redraw(`autoSlide`);
+        }, 1000);
+    }
+
+    //Pause the slider, either when manually moving the slider or when clicking the pause button
+    //Pausing stops the timer and resets the button to play mode
+    function pause(button) {
+        button.title = `play`;
+        button.className = `fa fa-play`;
+        clearTimeout(sliderTimer);
+        sliderTimer = undefined;
+    }
+
+    //Toggle play and pause from the button
+    playBtn.addEventListener('click', function () {
+        if (sliderTimer === undefined) {
+            play(this);
+        } else {
+            pause(this);
+        }
+    });
+
+    //Redraw the Infograph when the input is manually changed
+    document.querySelector(`#play-range`).addEventListener(`input`, function (e) {
+        pause(playBtn);
+        decadeValue = parseInt(e.target.value);
+        redraw(`manualSlide`);
+    });
+			
     //Set up step slider control svg
     const sliderStep = d3
         .sliderBottom()
@@ -360,7 +404,8 @@
         d3.select(`#divStoryBox`).classed(`hidden`, false);    
     }
     
-    //Function - redraw map svg and bar chart on change of decade in slider control
+    //Function - redraw Infograph on change of decade in slider control
+    //(this happens either on manually moving the range input on the slider, or from a timer when the slider is played automatically)
     function redraw() {
 
         const lastKeyValue = dataset.length - 1;
@@ -368,6 +413,11 @@
             dataset = baseDataset.slice(0,decades.indexOf(decadeValue)+1);
         }
         
+        if (slideMode = `autoSlide`) {
+			input.value = decadeValue;
+		}
+//		output.innerHTML = decadeValue.toString() + `'s`;
+
         //Update bar chart to reflect population early in the selected decade    
         decadeValueDataObject = [baseDataset[decades.indexOf(decadeValue)]];
         yScale.domain([decadeValueDataObject.decade]);
@@ -424,7 +474,7 @@
     //Function - main function that runs each of the component functions
     function runInfographic () {
     
-        gStep.call(sliderStep);	//Runs the slider step control
+  //      gStep.call(sliderStep);	//Runs the slider step control
 
         populationChart();		//Sets up initial display of the population bar chart	
         
