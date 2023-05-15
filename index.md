@@ -220,7 +220,6 @@
     const playBtn = document.querySelector(`#play-pause-button`);
     let sliderTimer = undefined;
 
-
     //Autoplay the slider, redrawing the Infograph at each step along the slider
     function play(button) {
         button.title = `pause`;
@@ -232,7 +231,7 @@
                 decadeValue += 10;
             }
             redraw(`autoSlide`);
-        }, 1000);
+        }, 5000);
     }
 
     //Pause the slider, either when manually moving the slider or when clicking the pause button
@@ -414,12 +413,9 @@
         }
         
         const input = document.querySelector('#play-range');
-        const output = document.querySelector('#play-output');
-
         if (slideMode = `autoSlide`) {
 			input.value = decadeValue;
 		}
-//		output.innerHTML = decadeValue.toString() + `'s`;
 
         //Update bar chart to reflect population early in the selected decade    
         decadeValueDataObject = [baseDataset[decades.indexOf(decadeValue)]];
