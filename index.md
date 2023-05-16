@@ -2,7 +2,7 @@
 
 ---
 
-### Interactive Data Visualisation - Infographic 
+### Interactive Data Visualisation 
 
 <style type="text/css">	
   
@@ -271,7 +271,7 @@
         .rangeRound([0, chartHeight])
         .padding(0.15);
 
-    const xAxis = d3.axisBottom(xScale).ticks(2, `,.3d`).tickSize(0);
+    const xAxis = d3.axisBottom(xScale).ticks(4, `,.3d`).tickSize(1);
     const yAxis = d3.axisLeft(yScale).tickValues([]);
 
     svgChart.append(`g`)
