@@ -163,7 +163,7 @@
     <div id="divStoryBox" >
         <p><strong><span id="storyBoxTitle" style="color: #069"></span></strong></p>
         <p><span id="storyBoxText"></span></p>
-        <img src="/images/rangiora_high_street.png" alt="Farmers Co-op store" height="90px" width="160px">
+        <img src="/images/te_rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" height="90px" width="160px">
         <p><span id="storyBoxCitation" style="font-size: 9px; color: #8d918d"></span></p>
     </div>
 </div>
@@ -291,12 +291,19 @@
 
     const path = d3.geoPath(projection);
     
-    //Create map svg element
+    //Create map svg element and append 1840's map sketch
     const svgMap = d3
         .select("div#divMap")
         .append("svg")
         .attr("width", w)
         .attr("height", h);
+
+    svgMap.append("svg:image")
+        . attr("xlink:href", "/images/rangiora_1840s.png")
+        . attr("x", 140)
+        . attr("y", 100)
+        .attr("width", 90)
+        .attr("height", 130);
              
     //Function - add bar to population bar chart svg
     function populationChart() {
