@@ -444,7 +444,7 @@
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxText`)
-            .html(`<span>${dataset[decades.indexOf(decadeValue)].text}<br><ahref="${dataset[decades.indexOf(decadeValue)].ahref}"><img ${dataset[decades.indexOf(decadeValue)].image}></ahref></span>`);
+            .html(`<span>${dataset[decades.indexOf(decadeValue)].text}<br><a href="${dataset[decades.indexOf(decadeValue)].ahref}"><img ${dataset[decades.indexOf(decadeValue)].image}></a></span>`);
  //           .text(dataset[decades.indexOf(decadeValue)].text);
 
         d3.select(`#divStoryBox`)
