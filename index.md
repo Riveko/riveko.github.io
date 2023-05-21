@@ -132,7 +132,7 @@
         font-family: sans-serif;
         font-size: 12px;
         line-height: 16px;    
-
+    }
 
 </style>
 
