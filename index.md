@@ -97,7 +97,7 @@
     }
     
     
-	#initialmap.hidden {
+	#initialMap.hidden {
 		display: none;
 	}
 
@@ -423,6 +423,8 @@
         // change map to reflect property titles issued up to and including the selected decade
         if (decadeValue != 1840) {
             d3.select(`#initialMap`).classed(`hidden`, true);
+        } else {
+            d3.select(`#initialMap`).classed(`hidden`, false);
         }
 
         svgMap.selectAll("path")
