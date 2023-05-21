@@ -96,6 +96,11 @@
         color: #069; 
     }
     
+    
+	#initialmap.hidden {
+		display: none;
+	}
+
     .propertylabel {
 		font-family: Helvetica, sans-serif;
 		font-size: 4px;
@@ -293,17 +298,19 @@
     
     //Create map svg element and append 1840's map sketch
     const svgMap = d3
-        .select("div#divMap")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h);
+        .select(`div#divMap`)
+        .append(`svg`)
+        .attr(`width`, w)
+        .attr(`height`, h);
 
-    svgMap.append("svg:image")
-        . attr("xlink:href", "/images/rangiora_1840s.png")
-        . attr("x", 140)
-        . attr("y", 100)
-        .attr("width", 90)
-        .attr("height", 130);
+    svgMap.append(`svg:image`)
+        .attr(`id`, `initialMap`)
+        .attr(`class`, `hidden`)
+        .attr(`xlink:href`, `/images/rangiora_1840s.png`)
+        .attr(`x`, 140)
+        .attr(`y`, 100)
+        .attr(`width`, 90)
+        .attr(`height`, 130);
              
     //Function - add bar to population bar chart svg
     function populationChart() {
@@ -414,6 +421,10 @@
             .attr(`fill`, d => d.color);
       
         // change map to reflect property titles issued up to and including the selected decade
+        if (decadeValue != 1840) {
+            d3.select(`#initialMap`).classed(`hidden`, true);
+        }
+
         svgMap.selectAll("path")
             .transition()
             .attr("fill", function(d,i) {
@@ -439,7 +450,7 @@
             .text(decadeValue < 1980 ? `Source: Rangiora by D.N Hawkins, Rangiora Borough Council 1983` : ``);
         
         //Display the story text box
-        d3.select("#divStoryBox").classed(`hidden`, false);
+        d3.select(`#divStoryBox`).classed(`hidden`, false);
             
     }			
     
