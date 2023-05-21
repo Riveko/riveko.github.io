@@ -31,7 +31,7 @@
 		color: #8d918d;
 	}
 	
-	.aigln-left {
+	.align-left {
 		float: left;
 	}
 	
@@ -371,7 +371,7 @@
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxText`)
-            .html(`<span><a href="${dataset[decades.indexOf(decadeValue)].href}" target=”_blank”><img class="aigln-left" ${dataset[decades.indexOf(decadeValue)].image}></a>${dataset[decades.indexOf(decadeValue)].text}</span>`);
+            .html(`<span><a href="${dataset[decades.indexOf(decadeValue)].href}" target=”_blank”><img class="align-left" ${dataset[decades.indexOf(decadeValue)].image}></a>${dataset[decades.indexOf(decadeValue)].text}</span>`);
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxCitation`)
@@ -444,7 +444,7 @@
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxText`)
-            .html(`<span><a href="${dataset[decades.indexOf(decadeValue)].href}" target=”_blank”><img class="aigln-left" ${dataset[decades.indexOf(decadeValue)].image}></a>${dataset[decades.indexOf(decadeValue)].text}</span>`);
+            .html(`<span><a href="${dataset[decades.indexOf(decadeValue)].href}" target=”_blank”><img class="align-left" ${dataset[decades.indexOf(decadeValue)].image}></a>${dataset[decades.indexOf(decadeValue)].text}</span>`);
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxCitation`)
