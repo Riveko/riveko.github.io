@@ -307,10 +307,10 @@
         .attr(`id`, `initialMap`)
         .attr(`class`, `hidden`)
         .attr(`xlink:href`, `/images/rangiora_1840s.png`)
-        .attr(`x`, 0)
-        .attr(`y`, 0)
-        .attr(`width`, 260)
-        .attr(`height`, 350);
+        .attr(`x`, 20)
+        .attr(`y`, 20)
+        .attr(`width`, 220)
+        .attr(`height`, 300);
              
     //Function - add bar to population bar chart svg
     function populationChart() {
