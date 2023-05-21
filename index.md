@@ -31,7 +31,7 @@
 		color: #8d918d;
 	}
 	
-	.align-left {
+	.aigln-left {
 		float: left;
 	}
 	
@@ -132,7 +132,7 @@
         font-family: sans-serif;
         font-size: 12px;
         line-height: 16px;    
-    }
+
 
 </style>
 
@@ -178,7 +178,7 @@
 
     //Define Global variables
     const baseDataset = [ 
-        { key: 0, decade: 1840, population: 0, color: `#004529`, text: `Prior to Ngati Toa's attack and destruction of Kaiapohia Pa in 1831, Ngai Tahu built pataka in Rangiora to store weapons and food.`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" height="90px" width="160px"`},		
+        { key: 0, decade: 1840, population: 0, color: `#004529`, text: `Prior to Ngati Toa's attack and destruction of Kaiapohia Pa in 1831, Ngai Tahu built pataka in Rangiora to store weapons and food.`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" style="height:90px; width:160px; margin-right:10px;"`},		
         { key: 1, decade: 1850, population: 20, color: `#004529`, text: `In 1851, Charles Torlesse and John Boys, together with their wives (two Townsend sisters from Ferrymead - Alicia and Priscilla) were the first Europeans to build homes on recently acquired rural sections in Rangiora`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" height="90px" width="160px"`},		
         { key: 2, decade: 1860, population: 200, color: `#006837`, text: `1860's text`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" height="90px" width="160px"`},		
         { key: 3, decade: 1870, population: 750, color: `#238443`, text: `1870's text`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" height="90px" width="160px"`},
@@ -371,7 +371,7 @@
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxText`)
-            .html(`<span>${dataset[decades.indexOf(decadeValue)].text}<a href="${dataset[decades.indexOf(decadeValue)].href}" target=”_blank”><img ${dataset[decades.indexOf(decadeValue)].image}></a></span>`);
+            .html(`<span><a href="${dataset[decades.indexOf(decadeValue)].href}" target=”_blank”><img class="aigln-left" ${dataset[decades.indexOf(decadeValue)].image}></a>${dataset[decades.indexOf(decadeValue)].text}</span>`);
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxCitation`)
@@ -444,7 +444,7 @@
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxText`)
-            .html(`<span>${dataset[decades.indexOf(decadeValue)].text}<a href="${dataset[decades.indexOf(decadeValue)].href}" target=”_blank”><img ${dataset[decades.indexOf(decadeValue)].image}></a></span>`);
+            .html(`<span><a href="${dataset[decades.indexOf(decadeValue)].href}" target=”_blank”><img class="aigln-left" ${dataset[decades.indexOf(decadeValue)].image}></a>${dataset[decades.indexOf(decadeValue)].text}</span>`);
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxCitation`)
