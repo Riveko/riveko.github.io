@@ -120,7 +120,7 @@
         -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
         -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-        pointer-events: none;
+  /*      pointer-events: none; */
     }
 			
 	#divStoryBox.hidden {
@@ -444,7 +444,7 @@
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxText`)
-            .html(`<span>${dataset[decades.indexOf(decadeValue)].text}<br><a href="${dataset[decades.indexOf(decadeValue)].href}"><img ${dataset[decades.indexOf(decadeValue)].image}></a></span>`);
+            .html(`<span>${dataset[decades.indexOf(decadeValue)].text}<br><a href="${dataset[decades.indexOf(decadeValue)].href}" target=”_blank”><img ${dataset[decades.indexOf(decadeValue)].image}></a></span>`);
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxCitation`)
