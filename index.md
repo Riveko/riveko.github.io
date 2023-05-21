@@ -307,8 +307,8 @@
         .attr(`id`, `initialMap`)
         .attr(`class`, `hidden`)
         .attr(`xlink:href`, `/images/rangiora_1840s.png`)
-        .attr(`x`, 20)
-        .attr(`y`, 20)
+        .attr(`x`, 50)
+        .attr(`y`, 10)
         .attr(`width`, 220)
         .attr(`height`, 300);
              
