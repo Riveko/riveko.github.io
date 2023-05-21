@@ -163,7 +163,7 @@
     <div id="divStoryBox" >
         <p><strong><span id="storyBoxTitle" style="color: #069"></span></strong></p>
         <p><span id="storyBoxText"></span></p>
-        <img src="/images/te_rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" height="90px" width="160px">
+        <img src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" height="90px" width="160px">
         <p><span id="storyBoxCitation" style="font-size: 9px; color: #8d918d"></span></p>
     </div>
 </div>
