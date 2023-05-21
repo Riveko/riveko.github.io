@@ -306,7 +306,7 @@
     svgMap.append(`svg:image`)
         .attr(`id`, `initialMap`)
         .attr(`class`, `hidden`)
-        .attr(`xlink:href`, `/images/rangiora_1840s.png`)
+        .attr(`xlink:href`, `/images/rangiora_map_1848.png`)
         .attr(`x`, 10)
         .attr(`y`, 10)
         .attr(`width`, 250)
