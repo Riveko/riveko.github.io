@@ -371,7 +371,7 @@
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxText`)
-            .text(dataset[decades.indexOf(decadeValue)].text);
+            .html(`<span>${dataset[decades.indexOf(decadeValue)].text}<br><a href="${dataset[decades.indexOf(decadeValue)].href}"><img ${dataset[decades.indexOf(decadeValue)].image}></a></span>`);
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxCitation`)
