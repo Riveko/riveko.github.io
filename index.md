@@ -363,15 +363,17 @@
         }).catch( err => {console.log(err)});   
     }
                 
-    //Function - set up story box svg
+    //Function - update story box div
     function storyBox () {
+        const storyBoxData = dataset[decades.indexOf(decadeValue)]
+        
         d3.select(`#divStoryBox`)
             .select(`#storyBoxTitle`)
-            .text(dataset[decades.indexOf(decadeValue)].title);
+            .text(storyBoxData.title);
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxText`)
-            .html(`<span><a href="${dataset[decades.indexOf(decadeValue)].href}" target=”_blank”><img ${dataset[decades.indexOf(decadeValue)].image}></a>${dataset[decades.indexOf(decadeValue)].text}</span>`);
+            .html(`<span>${storyBoxData.text}<a href="${storyBoxData.href}" target=”_blank”><img ${storyBoxData.image}></a></span>`);
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxCitation`)
@@ -438,7 +440,9 @@
             }});
 
         //Update the story text box with text and images relevant to the selected decade
-        d3.select(`#divStoryBox`)
+        storyBox();				
+        
+   /*     d3.select(`#divStoryBox`)
             .select(`#storyBoxTitle`)
             .text(dataset[decades.indexOf(decadeValue)].title);
 
@@ -452,7 +456,7 @@
         
         //Display the story text box
         d3.select(`#divStoryBox`).classed(`hidden`, false);
-            
+     */       
     }			
     
     //Function - main function that runs each of the component functions
