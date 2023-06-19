@@ -169,6 +169,7 @@
         <p><strong><span id="storyBoxTitle" style="color: #069"></span></strong></p>
         <p><span id="storyBoxText"></span></p>
         <p><span id="storyBoxCitation" style="font-size: 9px; color: #8d918d"></span></p>
+        <p><span id="storyBoxDataSource" style="font-size: 9px; color: #8d918d"></span></p>
     </div>
 </div>
 
@@ -178,8 +179,8 @@
 
     //Define Global variables
     const baseDataset = [ 
-        { key: 0, decade: 1840, population: 0, color: `#004529`, title: `Waimakariri-Rakahuri Lowlands in the late 1840's`, text: `Prior to Ngati Toa's attack and destruction of Kaiapohia Pa in 1831, Ngai Tahu were said to have built pataka to store weapons and food near Rangiora, similar to those in this 1848 sketch by William Fox.`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" style="height:135px; width:240px; margin-left:30px;"`, citation:`Source: Rangiora by D.N Hawkins, Rangiora Borough Council 1983`, source:`NZ Statistics Census Data`},		
-        { key: 1, decade: 1850, population: 20, color: `#004529`, title: `The`, text: `In 1851, Charles Torlesse and John Boys, together with their wives (two Townsend sisters from Ferrymead - Alicia and Priscilla) were the first Europeans to build homes on recently acquired rural sections in Rangiora`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" style="height:135px; width:240px; margin-left:30px;"`},		
+        { key: 0, decade: 1840, population: 0, color: `#004529`, title: `Waimakariri-Rakahuri Lowlands in the late 1840's`, text: `Prior to Ngati Toa's attack and destruction of Kaiapohia Pa in 1831, Ngai Tahu may have built pataka to store weapons and food near Rangiora, similar to pataka in this 1848 sketch by William Fox.`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" style="height:135px; width:240px; margin-left:30px;"`, citation:`Source: Rangiora by D.N Hawkins, Rangiora Borough Council 1983`, source:`Data source: NZ Statistics Census Data`},		
+        { key: 1, decade: 1850, population: 20, color: `#004529`, title: `The`, text: `In 1851, Charles and Alicia Torlesse and John and Priscilla Boys were the first Europeans to build homes on recently acquired rural sections in Rangiora.  Alicia and Priscilla were two of six Townsend daughters who had arrived in Lyttleton with their family in 1850 on one of the early ships.  Torlesse and Boys had been engaged by the Canterbury Association to survey land north of the Waimakariri in the late 1840s.`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:``, citation:`Source: Rangiora by D.N Hawkins, Rangiora Borough Council 1983`, source:`Data source: NZ Statistics Census Data`},		
         { key: 2, decade: 1860, population: 200, color: `#006837`, title: `The`, text: `1860's text`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" style="height:135px; width:240px; margin-left:30px;"`},		
         { key: 3, decade: 1870, population: 750, color: `#238443`, title: `The`, text: `1870's text`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" style="height:135px; width:240px; margin-left:30px;"`},
         { key: 4, decade: 1880, population: 1500, color: `#41ab5d`, title: `The`, text: `1880's text`, href: `https://waimakaririlibraries.com/__data/assets/pdf_file/0023/13874/Chapter-1-Breaching-the-Unknown-1.pdf`, image:`src="/images/Te_Rakawakaputa_sketch.png" alt="Te Rakawakaputa on the Korotuaheka in December 1848" style="height:135px; width:240px; margin-left:30px;"`},
@@ -377,9 +378,13 @@
 
         d3.select(`#divStoryBox`)
             .select(`#storyBoxCitation`)
-            .text(storyBoxData.citation)
+            .text(storyBoxData.citation);
+
+        d3.select(`#divStoryBox`)
+            .select(`#storyBoxDataSource`)
             .text(storyBoxData.source);
             
+
         //Display the story box
         d3.select(`#divStoryBox`).classed(`hidden`, false);    
     }
