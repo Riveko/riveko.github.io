@@ -1,11 +1,12 @@
 title: Rob Bolton # your name (or website title) here
 logo: "/images/profile_photo_nobg.png?raw=true" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
-  First description 
+   
   <br><br>
-  Second description 
+  This Portfolio is a "work in progress" 
+  Produced using a GitHub Pages template, JavaScript, D3.js, HTML and CSS 
   <br><br>
-  <a href="https://www.linkedin.com/in/example/">View My LinkedIn Profile</a> 
+  
   
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
